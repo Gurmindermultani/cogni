@@ -1,0 +1,238 @@
+[
+	{
+		"filename":"sl026.challenge.view.html",
+		"data":{
+			"id":11,
+			"audioPath": "content/assets/audios/sl026-challenge/",
+			"imagePath": "content/assets/images/sl026-challenge/",
+			"dynamicAudios": [
+				{"id": 0, "audio": "no.mp3"},
+				{"id": 1, "audio": "_1.mp3"},
+				{"id": 2, "audio": "_2.mp3"},
+				{"id": 3, "audio": "_3.mp3"},
+				{"id": 4, "audio": "_4.mp3"},
+				{"id": 5, "audio": "_5.mp3"},
+				{"id": 6, "audio": "_6.mp3"},
+				{"id": 7, "audio": "_7.mp3"},
+				{"id": 8, "audio": "_8.mp3"},
+				{"id": 9, "audio": "_9.mp3"},
+				{"id": 10, "audio": "_10.mp3"},
+				{"id": 11, "audio": "_11.mp3"},
+				{"id": 12, "audio": "_12.mp3"}
+			],
+			"effects":[
+				{
+					"id": 0,
+					"audio": "button-click.mp3"
+				},
+				{
+					"id": 1,
+					"audio": "sound-blank-square.mp3"
+				},
+				{
+					"id": 2,
+					"audio": "sound_neutralnoise.mp3"
+				},
+				{
+					"id": 3,
+					"audio": "sound_success.mp3"
+				},
+				{
+					"id":4,
+					"audio": "sound_drop.mp3"
+				},
+				{
+					"id":5,
+					"audio": "sound_failure.mp3"
+				}
+			],
+			"narrations":[
+				{
+					"id": 0,
+					"content": "The yellow shapes have been used to do some printing. You are going to work out what they printed. Click on the yellow shape you want to try first.",
+					"audio": "NarSound1.mp3"
+				},
+				{
+					"id": 1,
+					"content": "If you are both happy with your choice click 'Next'.",
+					"audio": "NarSound2.mp3"
+				},
+				{
+					"id": 2,
+					"content": "Drag the prints into the box that you think were made by the yellow shape. There may be one or many.",
+					"audio": "NarSound3.mp3"
+				},
+				{
+					"id": 3,
+					"content": "Click 'Check' when you are both happy with your answer.",
+					"audio": "NarSound4.mp3"
+				},
+				{
+					"id": 4,
+					"content": "Thats not right. Talk about how to change your answer and try again.",
+					"audio": "NarSound6.mp3"
+				},
+				{
+					"id": 5,
+					"content": "You didn't find the right answer this time. Click 'Next' to find out why.",
+					"audio": "NarSound21.mp3"
+				},
+				{
+					"id": 6,
+					"content": "Well done, you found one correct print but there is another. Keep trying.",
+					"audio": "NarSound13.mp3"
+				},
+				{
+					"id": 7,
+					"content": "One of these prints is correct. Talk about which you need to change and then try again.",
+					"audio": "NarSound7.mp3"
+				},
+				{
+					"id": 8,
+					"content": "Some of these prints are correct. Talk about which you need to change and then try again.",
+					"audio": "NarSound8.mp3"
+				},
+				{
+					"id": 9,
+					"content": "Fantastic you found all the correct prints.",
+					"audio": "NarSound20.mp3"
+				},
+				{
+					"id": 10,
+					"content": "Click the play button to see how this shape makes a print.",
+					"audio": "NarSound24.mp3"
+				},
+				{
+					"id": 11,
+					"content": "Great, you found the correct print.",
+					"audio": "NarSound19.mp3"
+				},
+				{
+					"id": 12,
+					"content": "One of these prints is correct. Talk about which you need to to take out and then try again.",
+					"audio": "NarSound9.mp3"
+				},
+				{
+					"id": 13,
+					"content": "Two of these prints are correct. Talk about which you need to to take out and then try again.",
+					"audio": "NarSound10.mp3"
+				},
+				{
+					"id": 14,
+					"content": "Well done you found two correct prints but there is another. Keep trying.",
+					"audio": "NarSound15.mp3"
+				},
+				{
+					"id": 15,
+					"content": "Three of these prints are correct. Talk about which you need to to take out and then try again.",
+					"audio": "NarSound11.mp3"
+				},
+				{
+					"id": 16,
+					"content": "Well done, you found one correct print but there are more. Keep trying.",
+					"audio": "NarSound14.mp3"
+				},
+				{
+					"id": 17,
+					"content": "Well done, you found two correct prints but there are more. Keep trying.",
+					"audio": "NarSound16.mp3"
+				},
+				{
+					"id": 18,
+					"content": "Well done, you found three correct prints but there are more. Keep trying.",
+					"audio": "NarSound17.mp3"
+				},
+				{
+					"id": 19,
+					"content": "Well done, you found four correct prints but there is another. Keep trying.",
+					"audio": "NarSound18.mp3"
+				},
+				{
+					"id": 20,
+					"content": "Five of these prints are correct. Talk about which you need to to take out and then try again.",
+					"audio": "NarSound12.mp3"
+				},
+				{
+					"id": 21,
+					"content": "Which yellow shapes do you want to choose next? Click on it to continue.",
+					"audio": "NarSound25.mp3"
+				}
+			],
+			"threeDshapes":{
+				"square" : {
+					"status" : "normal",
+					"answerKey" : ["blue_square","blue_line1","green_circle3"],
+					"demoText" : "A cube, a blank piece of paper, and a tray containing colored solution are next to one another.",
+					"playText" : "The cube is dipped in the colored solution and pressed onto the blank paper in 3 different ways. The paper now has 3 prints which are a short line, a small square, and a point."
+				},
+				"rect" : {
+					"status" : "normal",
+					"answerKey" : ["blue_square2","blue_line3","green_circle3","green_rect","green_line"],
+					"demoText" : "A rectangular prism, blank piece of paper, and a tray containing colored solution are below the other.",
+					"playText" : "The rectangular prism is dipped in the colored solution and pressed onto the blank paper in 5 different ways. The paper now has 5 prints which are a short line, a small square, a point, a large rectangle, and a long line."
+				},
+				"circle" : {
+					"status" : "normal",
+					"answerKey" : ["green_circle2"],
+					"demoText" : "A sphere, a blank piece of paper, and a tray containing colored solution are next to one another. ",
+					"playText" : "The sphere is dipped in the colored solution and pressed onto the blank paper once. The paper now has 1 print which is a small circle."
+				},
+				"cylinder" : {
+					"status" : "normal",
+					"answerKey" : ["green_circle","blue_line2"],
+					"demoText" : "A cylinder, a blank piece of paper, and a tray containing colored solution are next to one another.",
+					"playText" : "The cylinder is dipped in the colored solution and pressed onto the blank paper in 2 different ways. The paper now has 2 prints which are a large circle and small rectangle."
+				},
+				"polygon" : {
+					"status" : "normal",
+					"answerKey" : ["green_triangle","green_circle3","blue_line1"],
+					"demoText" : "Two pyramids sharing a common base, a blank piece of paper, and a tray containing colored solution are next to one another.",
+					"playText" : "The two pyramids sharing a common base are dipped in the colored solution and pressed onto the blank paper in 3 different ways. The paper now has 3 prints which are a point, a small triangle, and a short line."
+				},
+				"cone" : {
+					"status" : "normal",
+					"answerKey" : ["green_line","blue_cone","green_circle3","blue_line1","blue_square"],
+					"demoText" : "A pyramid, a blank piece of paper, and a tray containing colored solution are next to one another.",
+					"playText" : "The pyramid is dipped in the colored solution and pressed onto the blank paper in 5 different ways. The paper now has 5 prints which are a medium line, a long line, a large square, a large triangle, and a point."
+				}
+			},
+			"blueShapes" : ["blue_square","blue_line1","blue_square2","blue_line2","blue_line3","blue_cone"],
+			"greenShapes": ["green_circle","green_rect","green_line","green_circle2","green_circle3","green_triangle"],
+			"altText" : {
+				"blue_square" : "Print of a square",
+				"blue_square2" : "Print of a small square",
+				"blue_line2" : "Print of a small line",
+				"blue_cone" : "Print of a large cone",
+				"blue_line1" : "Print of a medium line",
+				"blue_line3" : "Print of a small rectangle",
+				"green_circle" : "Print of a large circle",
+				"green_rect" : "Print of a large rectangle",
+				"green_triangle" : "Print of a small triangle",
+				"green_line" : "Print of a long line",
+				"green_circle2" : "Print of a small circle",
+				"green_circle3" : "Print of a point"
+			},
+			"homepageTitle":"Match 3D shapes to their prints",
+			"toatalChances": 5,
+
+			"makeOptions":[
+				{
+					"number":7,
+					"requiredPossibilites" : "5",
+					"inputcolrowNo" : 5,
+					"inputcolrowNo1" : 0,
+					"inputcolrowNo2" : 0
+
+				},
+				{
+					"number":10,
+					"requiredPossibilites" : "5",
+					"inputcolrowNo" : 5,
+					"inputcolrowNo1" : 0,
+					"inputcolrowNo2" : 0
+				}
+
+			]
+		}
+	}
+]

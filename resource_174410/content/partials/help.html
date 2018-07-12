@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<!--
+	NOTES:
+	1. All tokens are represented by '$' sign in the template.
+	2. You can write your code only wherever mentioned.
+	3. All occurrences of existing tokens will be replaced by their appropriate values.
+	4. Blank lines will be removed automatically.
+	5. Remove unnecessary comments before creating your template.
+-->
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="authoring-tool" content="Adobe_Animate_CC">
+<title>How to play instructions</title>
+<!-- write your code here -->
+<script>
+	var folder = parent.folder;
+	var inner = parent.inner;
+	var versionDetails = parent.versionDetails;
+	function loadExternalFile(filename, filetype){
+		var fileref;
+		if (filetype=="js"){
+			fileref=document.createElement('script')
+			fileref.setAttribute("type","text/javascript")
+		}
+		else if (filetype=="css"){
+			fileref=document.createElement("link")
+			fileref.setAttribute("rel", "stylesheet")
+			fileref.setAttribute("type", "text/css")
+		}
+		if (fileref.readyState){  //IE
+			fileref.onreadystatechange = function(){
+				if (fileref.readyState == "loaded" ||
+				fileref.readyState == "complete"){
+					fileref.onreadystatechange = null;
+					loadScript();
+				}
+			};
+		} else {  //Others
+			fileref.onload = function(){
+				loadScript();
+			};
+		}
+		if(filetype=="js"){
+			fileref.setAttribute("src", filename)
+		} else if(filetype=="css") {
+			fileref.setAttribute("href", filename)
+		}
+		if (typeof fileref!="undefined")
+		document.getElementsByTagName("head")[0].appendChild(fileref)
+	}
+	var files = [
+		{name: "content/css/help.view.css", type: "css", resource: true},
+		{name: "libs/jquery/jquery-1.10.2.min.js", type: "js"},
+		{name: "libs/createjs.min.js", type: "js"},
+		{name: "libs/angular.min.js", type: "js"},
+		{name: "content/js/help-controller/help.controller.js", type: "js", resource: true},
+		{name: "content/js/component/help.js", type: "js", resource: true}
+	];
+	var loadScript = (function () {
+		var counter = 0;
+		return function () {
+			if (counter < files.length) {
+				var fol = files[counter].resource ? inner : folder;
+				loadExternalFile(fol + files[counter].name + versionDetails, files[counter].type);
+				counter += 1;
+			} else {
+				runDefaultScript();
+			}
+		}
+	})();
+
+	function runDefaultScript() {
+		//document.documentElement.style.setProperty("--asset-url", folder);
+	}
+	loadScript();
+</script>
+<script>
+var canvas, stage, exportRoot, anim_container, dom_overlay_container, fnStartAnimation;
+function init() {
+	canvas = document.getElementById("canvas");
+	anim_container = document.getElementById("animation_container");
+	dom_overlay_container = document.getElementById("dom_overlay_container");
+	var loader = new createjs.LoadQueue(false);
+	loader.installPlugin(createjs.Sound);
+	loader.addEventListener("complete", handleComplete);
+	loader.loadManifest(lib.properties.manifest);
+}
+function handleComplete(evt) {
+	//This function is always called, irrespective of the content. You can use the variable "stage" after it is created in token create_stage.
+	var queue = evt.target;
+	var ssMetadata = lib.ssMetadata;
+	for(i=0; i<ssMetadata.length; i++) {
+		ss[ssMetadata[i].name] = new createjs.SpriteSheet( {"images": [queue.getResult(ssMetadata[i].name)], "frames": ssMetadata[i].frames} )
+	}
+	exportRoot = new lib.sl29challengehelpview();
+	stage = new createjs.Stage(canvas);
+	stage.addChild(exportRoot);
+	//Registers the "tick" event listener.
+	fnStartAnimation = function() {
+		createjs.Ticker.setFPS(lib.properties.fps);
+		createjs.Ticker.addEventListener("tick", stage);
+	}
+	//Code to support hidpi screens and responsive scaling.
+	function makeResponsive(isResp, respDim, isScale, scaleType) {
+		var lastW, lastH, lastS=1;
+		window.addEventListener('resize', resizeCanvas);
+		resizeCanvas();
+		function resizeCanvas() {
+			var w = lib.properties.width, h = lib.properties.height;
+			var iw = window.innerWidth, ih=window.innerHeight;
+			var pRatio = window.devicePixelRatio || 1, xRatio=iw/w, yRatio=ih/h, sRatio=1;
+			if(isResp) {
+				if((respDim=='width'&&lastW==iw) || (respDim=='height'&&lastH==ih)) {
+					sRatio = lastS;
+				}
+				else if(!isScale) {
+					if(iw<w || ih<h)
+						sRatio = Math.min(xRatio, yRatio);
+				}
+				else if(scaleType==1) {
+					sRatio = Math.min(xRatio, yRatio);
+				}
+				else if(scaleType==2) {
+					sRatio = Math.max(xRatio, yRatio);
+				}
+			}
+			canvas.width = w*pRatio*sRatio;
+			canvas.height = h*pRatio*sRatio;
+			canvas.style.width = dom_overlay_container.style.width = anim_container.style.width =  w*sRatio+'px';
+			canvas.style.height = anim_container.style.height = dom_overlay_container.style.height = h*sRatio+'px';
+			stage.scaleX = pRatio*sRatio;
+			stage.scaleY = pRatio*sRatio;
+			lastW = iw; lastH = ih; lastS = sRatio;
+		}
+	}
+	makeResponsive(false,'both',false,1);
+	fnStartAnimation();
+}
+function playSound(id, loop, pos) {
+	pos = (pos) ? pos : 0;
+	currSound = id;
+	return createjs.Sound.play(id, createjs.Sound.INTERRUPT_EARLY, 0, pos, loop);
+}
+var chapterFrames = [
+	{start: 10, end: 170},
+	{start: 171, end: 383},
+	{start: 384, end: 610},
+	{start: 611, end: 806},
+	{start: 807, end: 912},
+	{start: 913, end: 1031}
+];
+function stopAtEnd() {
+	currPos = 0;
+		currSound = "";
+		canvasTimeLine.gotoAndStop(0);
+	$("#prev").attr("disabled", true);
+	$("#next").attr("disabled", true);
+	$("#prev").removeClass("enabled");
+	$("#next").removeClass("enabled");
+	$("#next").find("img").attr('src', "../assets/images/help/forward_btn_inactive.png");
+	$("#prev").find("img").attr('src', "../assets/images/help/replay_btn_inactive.png");
+	$("#pause").hide();
+	$("#play").show();
+}
+</script>
+<!-- write your code here -->
+</head>
+<body onload="init();" style="margin:0px;overflow:hidden;" class="help-container page">
+	<h1 class="sr-only" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Help: How to play the game</h1>
+	<div id="animation_container" style="background-color:rgba(255, 255, 255, 1.00); width:1024px; height:660px">
+		<canvas id="canvas" width="1024" height="660" style="position: absolute; display: block; background-color:rgba(255, 255, 255, 1.00);"></canvas>
+		<div id="dom_overlay_container" style="pointer-events:none; overflow:hidden; width:1024px; height:660px; position: absolute; left: 0px; top: 0px; display: block;">
+		</div>
+	</div>
+
+	<div class="loader"></div>
+	<button class="help_button dis-ass" id="helpInst">
+			<span class="sr-only">Keyboard Instructions. It has a popup</span>
+			<img></img>
+		</button>
+		<div class="help-clicked" id="instCont">
+			<div class="overlay"></div>
+			<div>
+				<div class="help-box" id="helpbox" role="dialog" aria-describedby="dialogContent">
+					<div id="dialogContent" style="overflow-y: scroll;">
+						<h1>Keyboard instructions</h1>
+						<ul>
+							<li>Press the Tab key to select a clock tile.</li>
+							<li>To move the current clock tile to the rack, press Alt and 5, then use the Up and Down Arrow keys to select a location, then press Enter. </li>
+							<li>Do the same thing to move a clock tile to a different place on the rack.</li>
+							<li>To remove a clock tile from the rack, press Alt and 5, then press Enter.</li>
+							<li>To link two or more clock tiles, press the Tab key to select the 'Link' button, then press Enter. Then press the Tab key to select the first clock tile and press Enter. Do the same thing to link other clock tiles to the first one.</li>
+							<li>To move linked clock tiles, press the Tab key to select the left or right arrow, then press Enter.</li>
+							<li>To finish moving linked clock tiles, press the Tab key to select the 'Link' button again, then press Enter.</li>
+						</ul>
+						<h1>How to play</h1>
+						<ul>
+							<li>Work together to complete the rack so that all the clocks are in the right order.</li>
+							<li>Look at the two clocks already on the rack, then talk about where you each need to move your clock tiles.</li>
+							<li>There are 6 empty spaces on the rack.</li>
+							<li>One of you can move the blue clock tiles, and the other the green.</li>
+							<li>You have 7 chances.</li>
+							<li>If you move a tile that is already on the rack, or you complete the rack incorrectly, you use a chance.</li>
+							<li>For each question, you can use the 'Link' button once to move one or more tiles along the rack without using a chance.</li>
+							<li>Click 'Check' when you are both happy with your choices.</li>
+							<li>If you are correct, you can play again with a different set of clock tiles. There are 3 different sets.</li>
+						</ul>
+					</div>
+					<button class="no_btn"><span>Close Instruction</span></button>
+					<!--button class="yes_btn" ng-blur="exitBlur($event)" ng-click="closePage()" ><span>Exit</span></button-->
+				</div>
+			</div>
+		</div>
+	<button id="play" class="dis-ass" ng-mousedown="playDown=true" ng-mouseup="playDown=false" ng-mouseout="playDown=false" ng-class="{'down': playDown}" aria-label="play video" tabindex="0">
+		<!-- <span class="sr-only">The alternate of video is provided within keyboard accessibility instructions</span> -->
+		<img></img>
+		
+	</button>
+	<button id="pause" class="dis-ass" ng-mousedown="pauseDown=true" ng-mouseup="pauseDown=false" ng-mouseout="pauseDown=false" ng-class="{'down': pauseDown}" tabindex="0" aria-label="pause video">
+	
+	<img></img>
+	</button>
+	<button id="prev" class="dis-ass" ng-mousedown="prevDown=true" ng-mouseup="prevDown=false" ng-mouseout="prevDown=false" ng-class="{'down': prevDown}" tabindex="0" aria-label="back">
+	
+	<img></img>
+	</button>
+	<button id="next" class="dis-ass" ng-mousedown="nextDown=true" ng-mouseup="nextDown=false" ng-mouseout="nextDown=false" ng-class="{'down': nextDown}" tabindex="0" aria-label="forward">
+	<img></img>
+	</button>
+	<div id="game-button" style="display:none"></div>
+	<div id="video-alert" class="sr-only" aria-live="polite" aria-atomic=true></div>
+	<script>
+	function initButtons(val){
+		var prevEle = document.getElementById("prev").style.visibility = val;
+		var nextEle = document.getElementById("next").style.visibility = val;
+		var pauseEle = document.getElementById("pause").style.visibility = val;
+		var playEle = document.getElementById("play").style.visibility = val;
+		var helpInstEle = document.getElementById("helpInst").style.visibility = val;
+
+
+	}
+	var instContEle = document.getElementById("instCont").style.visibility = "hidden";
+	initButtons("hidden");
+	</script>
+</body>
+</html>

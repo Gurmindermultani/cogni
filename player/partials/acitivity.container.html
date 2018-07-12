@@ -1,0 +1,13 @@
+<div id='activity-wrapper' class="activity-wrapper" style="position:relative" ng-controller='acitivityController' >
+	<!--div id="focusElement" tabIndex="100" ng-focus='elementBlur()' style="position:absolute;width:50px;height:50px;"></div-->
+	<div  id='activity' ng-init="init()" >
+		<div class='activity-container'   id='activity-holder'  >
+		<div id="customCursor" ng-style="{'width':cursorWidth,'height':cursorHeight}"></div>
+			<div class='activity' style="outline:none;"  ng-click='activityClick()' ng-repeat='x in totalPages' ng-focus="gotFocus($index)"  id="acitivity-{{$index}}" position='{{getCurrentPos($index)}}' >
+				<div ng-include='x.fileName'></div>
+				{{x.filename}}
+			</div>
+		</div>
+	</div>
+
+</div>

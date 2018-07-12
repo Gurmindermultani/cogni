@@ -1,0 +1,342 @@
+/* START - Common Styles */
+img{
+ -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+ }
+button{
+ -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+ }
+  .sr-only{
+	position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;
+}
+.help-container {
+	overflow: hidden;
+}
+.help-container .loader {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background-image: url("../assets/images/help/spinner48px.gif");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.help-container button {
+	border: none;
+	background: transparent;
+	outline: none;
+	padding: 0;
+	cursor: pointer;
+}
+.help-container #pause,
+.help-container #play {
+	width: 37px;
+	height: 36px;
+	position: absolute;
+	top: 574px;
+	left: 437px;
+	background-repeat: no-repeat;
+}
+.help-container #play {
+	--background-image: url("../assets/images/help/play_btn_up.png");
+}
+.help-container #play:hover {
+	--background-image: url("../assets/images/help/play_btn_over.png");
+}
+.help-container #play.down {
+	--background-image: url("../assets/images/help/play_btn_down.png");
+}
+.help-container #pause {
+	--background-image: url("../assets/images/help/pause_btn_up.png");
+}
+.help-container #pause:hover {
+	--background-image: url("../assets/images/help/pause_btn_over.png");
+}
+.help-container #pause.down {
+	--background-image: url("../assets/images/help/pause_btn_down.png");
+}
+.help-container #prev {
+	width: 37px;
+	height: 36px;
+	position: absolute;
+	top: 579px;
+	left: 380px;
+	--background-image: url("../assets/images/help/replay_btn_up.png");
+	--background-repeat: no-repeat;
+}
+.help-container #prev:disabled {
+	--background-image: url("../assets/images/help/replay_btn_inactive.png");
+	cursor: default;
+}
+.help-container #prev.enabled:hover {
+	--background-image: url("../assets/images/help/replay_btn_over.png");
+}
+.help-container #prev.down {
+	--background-image: url("../assets/images/help/replay_btn_down.png");
+}
+.help-container #next {
+	width: 37px;
+	height: 36px;
+	position: absolute;
+	top: 572px;
+	left: 493px;
+	--background-image: url("../assets/images/help/forward_btn_up.png");
+	background-repeat: no-repeat;
+}
+.help-container #next:disabled {
+	--background-image: url("../assets/images/help/forward_btn_inactive.png");
+	cursor: default;
+}
+.help-container #next.enabled:hover {
+	--background-image: url("../assets/images/help/forward_btn_over.png");
+}
+.help-container #next.down {
+	--background-image: url("../assets/images/help/forward_btn_down.png");
+}
+#game-button{
+  width: 92px;
+  height: 66px;
+  position: absolute;
+  top: 560px;
+  left: 550px;
+  background-image: url(../assets/images/help/go_to_game_dummy.png);
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+button:focus {
+		outline: black dotted 3px;
+}
+@media screen and (max-height: 600px) and (max-width: 960px) {
+	.help-container #animation_container {
+		background-color: #e6f5c0 !important;
+	}
+	.help-container #animation_container canvas{
+		height: 100% !important;
+		width: auto !important;
+		left: 156px;
+	}
+	.help-container #prev{
+		top: 374px;
+		left: 398px;
+		transform: scale(.7)
+	}
+	.help-container #next{
+		top: 370px;
+		left: 472px;
+		transform: scale(.7);
+	}
+	.help-container #pause, .help-container #play{
+		top: 372px;
+		left: 436px;
+		transform: scale(.7)
+	}
+	.page button.help_button{
+		top: 378px !important;
+		left: 346px !important;
+		transform: scale(.7);
+	}
+	.page .help-box{
+		bottom: 231px !important;
+		right: 50px !important;
+		transform: scale(.8);
+	}
+	.page .help-box #dialogContent ol{
+		    width: 490px;
+	}
+  #game-button{
+    top: auto;
+    bottom: 10px;
+    left: 497px;
+    transform: scale(.7);
+  }
+}
+/* END - Common Styles */
+/* instruction popup*/
+.page button.help_button{
+
+	--background-image: url("../assets/images/help/help_btn_up.png");
+	--background-repeat: no-repeat;
+	background-size: 100% 100%;
+
+
+	width: 37px;
+    height: 36px;
+    position: absolute;
+    top: 579px;
+    left: 310px;
+
+}
+.page button.help_button:hover{
+	--background-image:url("../assets/images/help/help_btn_over.png");
+	--background-color: transparent;
+}
+.page button.help_button:active{
+	--background-image: url("../assets/images/help/help_btn_down.png");
+	--background-color: transparent;
+}
+.page .help-clicked{
+	width: 1024px;
+	height: 660px;
+	position: absolute;
+	top: 0px;
+	z-index: 3;
+}
+.page .overlay{
+	position: absolute;
+	width: 1024px;
+	height: 660px;
+	top: 0px;
+	background-color: black;
+	opacity: 0.6;
+
+}
+.page .help-box{
+	width: 616px;
+	height: 392px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	background-image: url("../assets/images/s27-challenge/exit pop up_1.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	border: 1px solid rgba(91, 97, 76, 0.05);
+    background-color: rgba(91, 97, 76, 0.02);
+	
+}
+.page .help-box #dialogContent {
+	font-size: 16px;
+	overflow-y: auto;
+  height: 250px;
+  width: 88%;
+  position: absolute;
+  left: 37px;
+  top: 31px;
+}
+@font-face {
+  font-family: 'HeinemannRomanSpecial-Blk';
+  src: url('../../../player/assets/fonts/HeinemannRomanSpecial-Blk.eot');
+  src: url('../../../player/assets/fonts/HeinemannRomanSpecial-Blk.otf')format("opentype"),
+       url('../../../player/assets/fonts/HeinemannRomanSpecial-Blk.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+font-family: 'HeinemannRoman-Rm';
+src: url('../../../player/assets/fonts/HeinemannRoman-Rm.eot');
+src: url('../../../player/assets/fonts/HeinemannRoman-Rm.otf')format("opentype"),
+    url('../../../player/assets/fonts/HeinemannRoman-Rm.woff') format('woff'),
+    url('../../../player/assets/fonts/HeinemannRoman-Rm.ttf')  format('truetype');
+font-weight: normal;
+font-style: normal;
+}
+.page .help-box #dialogContent h1{
+    font-family: 'HeinemannRomanSpecial-Blk';
+}
+.page .help-box #dialogContent li{
+    font-family: 'HeinemannRoman-Rm';
+}
+.page .help-box #dialogContent ul{
+    width: 485px !important;
+ }
+button.no_btn{
+	width: 229px;
+	height: 62px;
+	background-image: url("../assets/images/s27-challenge/exit pop up_2_normal.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+	position: absolute;
+	top: 304px;
+	left: 198px;
+	color: black;
+	font-size: 22px;
+}
+button.yes_btn{
+	width: 112px;
+	height: 61px;
+	background-image: url("../assets/images/s27-challenge/exit pop up_3_normal.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+	position: absolute;
+	top: 304px;
+	right: 80px;
+	color: black;
+	font-size: 22px;
+}
+button.no_btn:hover{
+	background-image: url("../assets/images/s27-challenge/exit pop up_2_hover.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+
+}
+button.no_btn:active{
+	background-image: url("../assets/images/s27-challenge/exit pop up_2_selected.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+	color: white;
+}
+button.yes_btn:hover{
+	background-image: url("../assets/images/s27-challenge/exit pop up_3_hover.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+
+}
+button.yes_btn:active{
+	background-image: url("../assets/images/s27-challenge/exit pop up_3_selected.png");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-color: transparent;
+	color: white;
+}
+button *{
+	pointer-events:none;
+}
+/***********************high contrast fixes***********************/
+.page button.help_button:before {
+    --content: url("../assets/images/help/help_btn_up.png");
+	z-index:-1;
+}
+.help-container #pause:before {
+    --content: url("../assets/images/help/pause_btn_up.png");
+}
+.help-container #play:before {
+    --content: url("../assets/images/help/play_btn_up.png");
+}
+.help-container #prev:before{
+	--content: url("../assets/images/help/replay_btn_up.png")
+}
+.help-container #next:before{
+	--content: url("../assets/images/help/forward_btn_up.png");
+}
+.page .help-box:before{
+	background-color:black;
+	
+}
+/*************************************************************/

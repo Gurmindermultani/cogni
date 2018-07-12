@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html ng-app='App' lang='en'>
+<head>
+	<title></title>
+	<meta charset="utf-8" />
+	<!-- <meta http-equiv="X-UA-Compatible" content="IE=11" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+	<meta name="format-detection" content="telephone=no" />
+	<script>
+	function getUrlVars() {
+		var vars = [], hash;
+		var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+		for(var i = 0; i < hashes.length; i++)
+		{
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+		return vars;
+	}
+	var urlParams = getUrlVars();
+	var folder = urlParams.folder;
+	var inner = urlParams.inner;
+	var returnTo = urlParams.returnTo;
+	var versionDetails = "?ver=" + urlParams.ver + "&v="+ urlParams.v;
+	function loadExternalFile(filename, filetype){
+		var fileref;
+		if (filetype=="js"){
+			fileref=document.createElement('script')
+			fileref.setAttribute("type","text/javascript")
+		}
+		else if (filetype=="css"){
+			fileref=document.createElement("link")
+			fileref.setAttribute("rel", "stylesheet")
+			fileref.setAttribute("type", "text/css")
+		}
+		if (fileref.readyState){  //IE
+			fileref.onreadystatechange = function(){
+				if (fileref.readyState == "loaded" ||
+				fileref.readyState == "complete"){
+					fileref.onreadystatechange = null;
+					loadScript();
+				}
+			};
+		} else {  //Others
+			fileref.onload = function(){
+				loadScript();
+			};
+		}
+		if(filetype=="js"){
+			fileref.setAttribute("src", filename)
+		} else if(filetype=="css") {
+			fileref.setAttribute("href", filename)
+		}
+		if (typeof fileref!="undefined")
+		document.getElementsByTagName("head")[0].appendChild(fileref)
+	}
+	var files = [
+		{name: "libs/jquery/jquery-1.10.2.min.js", type: "js"},
+		{name: "libs/jquery/jquery-ui.min.js", type: "js"},
+		{name: "libs/jquery/jquery.ui.touch-punch.min.js", type: "js"},
+		{name: "libs/createjs.min.js", type: "js"},
+		{name: "libs/angular.min.js", type: "js"},
+		{name: "libs/angular-sanitize.min.js", type: "js"},
+		{name: "core/app.js", type: "js"},
+		{name: "content/js/controller/controllers.js", type: "js", resource: true},
+		{name: "content/js/component/directives.js", type: "js", resource: true},
+		{name: "components/directives/activity.reusable.js", type: "js"},
+		{name: "components/directives/global.js", type: "js"},
+		{name: "controllers/activity.controller.js", type: "js"},
+		{name: "components/services/shared.services.js", type: "js"},
+		{name: "components/directives/acitivity.view.js", type: "js"},
+		{name: "controllers/base.controller.js", type: "js"},
+		{name: "controllers/launch.controller.js", type: "js"},
+		{name: "css/font.css", type: "css"},
+		{name: "css/demo.default.css", type: "css"},
+		{name: "content/css/stylesheet.css", type: "css", resource: true}
+	];
+
+	var loadScript = (function () {
+		var counter = 0;
+		return function () {
+			if (counter < files.length) {
+				var fol = files[counter].resource ? inner : folder;
+				loadExternalFile(fol + files[counter].name + versionDetails, files[counter].type);
+				counter += 1;
+			}
+		}
+	})();
+
+
+
+	loadScript();
+</script>
+
+</head>
+
+
+<body ng-controller='baseController' ng-show="true">
+	<!-- <div ng-repeat="x in imagePreloadArray" ng-hide="true">
+		<img alt="" ng-src="{{playerImagePath+x}}"/>
+	</div> -->
+	<div class="pre-loader" id="preloader-element" style="width:48px;height:48px;position:absolute;top:0;bottom:0;left:0;right:0;margin:auto;z-index:9999;">
+		<img alt="loading" src="assets/images/spinner48px.gif">
+	</div>
+
+	<div turn-your-screen class="turn-your-screen" style="display:none;"></div>
+	<div id='student-edition'  ng-init='show=true;' ng-controller='launchController'>
+		<div class='wrapper {{hide}}' ng-show="showWrapper">
+			<div acitivity-view class="activity_view" ></div>
+		</div>
+	</div>
+	<div id="player-audio-effect" style="display:none">
+		<audio id="effect-audio-player-{{$index}}" ng-repeat="x in effectAudioFile" src="assets/audio/male/_0.mp3">
+			
+		</audio>
+	</div>
+</body>
+
+</html>

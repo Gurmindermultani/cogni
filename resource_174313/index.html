@@ -1,0 +1,211 @@
+
+
+<div class="sl011challenge" ng-class="{'device': isDevice, 'hover-device': hoverDevice}" data-ng-controller="sl011ChallengeController" ng-init='model=getModel($index);setPageIndex(canvasArray[$index]);getPageIndex($index)'>
+	<!--div ng-repeat="x in imagePreloadArrayInner" ng-hide="true">
+		<img ng-src="{{imagePath+x}}" alt=""/>
+	</div-->
+	<script>
+	$(document).ready(function(){
+
+		var ele = $(".sr-only")
+		var position = ele.position();
+		console.log(position.left)
+		console.log(position.top)
+		if(position.left > 0){
+			setTimeout(function(){
+			$("button,div").each(function( index ) {
+						$(this).css('background-image','none');
+						$(this).off("mouseleave");
+						$(this).off("mouseenter");
+						$(this).off("mousedown");
+						$(this).off("mouseover");
+						$(this).off("mouseout");
+						//$(this).off("mouseout");
+						//$(this).off();
+						$(this).stop();
+						$(this).finish();
+				});
+				//angular.element(".close-clicked").scope().showingclose = false;
+				$(".close-clicked").hide();
+				$(".finish-btn").hide();
+				$(".next-btn").hide();
+				$(".check-btn").hide();
+			},500);
+
+			console.log("for sr");
+		}else{
+			console.log("for nor");
+		}
+
+	})
+	</script>
+
+	<div>
+		<audio  ng-hide='false' id="aud_player_{{$index}}" ng-repeat="x in playerArray">
+			<source src="assets/audio/male/_0.mp3" type="audio/mpeg">
+		</audio>
+	</div>
+
+
+	<div class="header-bar">
+		<div pearson-logo></div>
+
+
+		<button class="sound-btn dis-ass" ng-hide="currentPage=='help'" ng-click="!enalbeNarrationBut || effectClick();">
+			{{effectDispText}}
+			<span class="sr-only" ng-show="effectDispText == 'Sound: on'">Activate to turn off</span>
+			<span class="sr-only" ng-show="effectDispText == 'Sound: off'">Activate to turn on</span>
+		</button>
+		<button class="voice-btn dis-ass" ng-hide="currentPage=='help'" ng-click="!enalbeNarrationBut || narrationClick();">{{narrationDispText}}
+			<span class="sr-only" ng-show="narrationDispText == 'Voice: on'">Activate to turn off</span>
+			<span class="sr-only" ng-show="narrationDispText == 'Voice: off'">Activate to turn on</span>
+		</button>
+		<button id="rootCloseBtn" class="close_button dis-ass" ng-click="showClosealert($event)">
+			<span class="sr-only">Close It has a popup</span>
+		</button>
+		<div class="close-clicked" ng-show="showingclose" >
+			<div class="overlay"></div>
+			<div>
+				<div class="close-box" id="closebox" ng-blur="parentexitBlur($event)" role="dialog" aria-describedby="dialogContent">
+					<span id="dialogContent">Are you sure you want to leave the game?</span>
+					<button class="no_btn" ng-mousedown="getMouseDown()" ng-click="hideClosealert($event)"><div>Keep playing</div></button>
+					<button class="yes_btn" ng-blur="exitBlur($event)" ng-mousedown="getMouseDown()" ng-click="closePage()" ><div>Exit</div></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<audio id="narration-audio" narration-audio style="position:absolute;z-index:100;">
+		<source src="assets/audio/male/_0.mp3" type="audio/mpeg">
+		</audio>
+		<audio id="effect-audio" effect-audio>
+			<source src="assets/audio/male/_0.mp3" type="audio/mpeg">
+			</audio>
+
+
+				<div class="homepage page" ng-show="currentPage=='home'">
+					<h1>{{pageTitle}}</h1>
+					<button dynamic-background="howBtnBackground" aria-label="How to play" class="how-btn help-play home" ng-click="helpClicked()" ng-mousedown="howDown=true" ng-mouseup="howDown=false" ng-mouseout="howDown=false" ng-class="{'down': howDown}">
+						<div>How to play</div><span class="sr-only">click to go How to play page</span></button>
+					<button dynamic-background="playBtnBackground" aria-label="Play" class="play-btn" ng-mousedown="getTabDown()" ng-click="playClicked()" my-play-enter>
+						<div>Play</div><span class="sr-only">click to play the lesson</span>
+					</button>
+				</div>
+				<div class="how-to-play page" ng-if="currentPage=='help'">
+					<iframe  class="page dis-ass" style="margin:0px;background:transparent;" src="{{helpPath}}"></iframe>
+					<button id="game-btn" style="visibility:hidden" ng-click="gameClick()" aria-label="Go to game" ng-mousedown="gameDown=true" ng-mouseup="gameDown=false" ng-mouseout="gameDown=false" ng-class="{'down': gameDown}">
+						<div>Go to game</div><span class="sr-only">Go to Game</span>
+					</button>
+				</div>
+				<div class="active-play page" ng-show="currentPage=='play'">
+					<div class="make-11">
+						<!-- <h1 class="sr-only" > Building Numbers</h1> -->
+						<div class="play-topic"><h1>Make {{makeoption}}</h1>
+							<span  class="sr-only" >Use Alt+5 to drop the counters from the bin to the respective tray.</span>
+						</div>
+
+						<div class="audio-script" ng-class="{'vot-change': repeatsameAns}" dynamic-background="(repeatsameAns) ? audioContainerOrangeBackground : audioContainerBackground ">
+							<button class="audio-btn" ng-disabled="!enableHowToPlay" aria-label="listen to instructions" tabindex="0" ng-click="narationClick(1)" dynamic-background="audioBtnBackground" ng-mousedown="audioDown=true" ng-mouseup="audioDown=false" ng-mouseout="audioDown=false" ng-class="{'down': audioDown}"><span class="sr-only">Instruction audio</span></button>
+							<p class="audio-transcript"  my-enter="narationClick()" role="alert" ng-click="narationClick()">{{model.narrations[currentNarrationId].content}}</p>
+						</div>
+						<div class="chances">
+							<div class="star-glow" aria-hidden="true" id="{{'star_'+$index}}" ng-repeat="x in chancesArr track by $index" ind={{$index}}>
+
+							</div>
+							<!-- <div class="sr-only" id="update-text" aria-live="polite" aria-atomic="true"></div> -->
+							<span  class="sr-only" id="chanceUpdate"  aria-live="polite" aria-atomic="true" ng-show="chancesUsed ==0">You have 5 chances left.</span>
+							<!-- <span  class="sr-only" id="update-text" aria-live="polite" aria-atomic="true">You have 5 chances left.</span> -->
+							<!-- <span class="sr-only" ng-if="chancesUsed >0" aria-live="polite" aria-atomic="true">Try again. You have {{5-chancesUsed}} chances left.</span> -->
+							<div id="loadGif"></div>
+							<!-- <div class="star-glow" ng-repeat="x in numberofChances track by $index"  ind={{$index}} ng-style="x.styles" ></div> -->
+
+						</div>
+						<div id="chancetext">Chances</div>
+						<div class="drag-con1" aria-describedby="blueDragcontainer">
+							<span class="sr-only" id="blueDragcontainer">A bin for blue counters. There are {{hiddenCount}} blue counters available.</span>
+							<div tabindex=0 draggable drag-accessible class="drag-object-cont drag1 dragI-{{$index}}" index="{{$index}}" ng-repeat="y in dragobj" source="blueDrag" ng-class="{'visi': y.blueHidden, 'enabled': enableAll, 'disabled': !enableAll}">
+								<div class="drag-object dragImg">
+									  <span class="sr-only">Blue counter {{$index+1}}<span>
+								</div>
+								<ul class="popup" ng-if="y.popupEnabled1">
+									<li ng-repeat="y in dropAccessibility" ng-if="y.name=='Bluedrop'" index="{{$index}}">{{y.name}}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="drag-con2" aria-describedby="greenDragcontainer">
+							<span class="sr-only" id="greenDragcontainer">A bin for green counters. There are {{hiddenCountgreen}} green counters available.</span>
+							<div tabindex=0 draggable drag-accessible class="drag-object-cont drag2 dragI-{{$index}}" index={{$index}} ng-repeat="y in dragobj" source="greenDrag" ng-class="{'visi': y.greenHidden, 'enabled': enableAll, 'disabled': !enableAll}">
+								<div class="drag-object-green"><span class="sr-only">Green counter {{$index+1}}<span></div>
+								<ul class="popup" ng-if="y.popupEnabled">
+									<li ng-repeat="y in dropAccessibility" ng-if="y.name=='Greendrop'" index="{{$index}}">{{y.name}}</li>
+								</ul>
+							</div>
+						</div>
+						<div class="sr-only" id="sr-text" aria-live="polite" aria-atomic="true"></div>
+						 <div class="sr-only" id="update-text" aria-live="polite" aria-atomic="true"></div>
+
+						<div class="drop-container">
+							<div  class="drop-values-1" ng-class="{'positionleft':inputcolumn1==0}">
+								<div class="value-holder" ng-repeat="x in inputValue track by $index" pIndex="{{$parent.$index}}" index={{$index}}>
+									<span class="sr-only" ng-show="activeArea=={{$index+changeInputcol}}" >Addition fact {{$index+1}}:</span>
+									<div class="inputdropvalue yellowBg-{{$index+changeInputcol}}" ng-show="activeArea=={{$index+changeInputcol}}">
+										<p class="elem elem-1">{{dropobj1.length}}<span class="sr-only" >Blue counter </span></p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{dropobj2.length}} <span class="sr-only" >green counter </span></p><span class="elem elem-4 verticalAlign">=</span><span class="elem elem-5">{{dropobj1.length+dropobj2.length}}</span> <span class="sr-only" > Counters </span></div>
+										<div class="inputdropFinalvalue" ng-show="activeArea > {{$index+1}}" aria-label="Correct."><p class="elem elem-1">{{correctAnswer1[$index].val}}</p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{correctAnswer2[$index].val}}</p><span class="elem elem-4 verticalAlign">=</span> <span class="elem elem-5">{{correctAnswer1[$index].val+correctAnswer2[$index].val}}</span></div>
+									</div>
+								</div>
+								<div class="drop-values-2" ng-show="inputcolumn1 >0">
+									<div class="value-holder"  ng-repeat="x in inputValue1 track by $index" index={{$index}}>
+										<!-- <span class="sr-only" >Addition fact {{$index+1}}:</span> -->
+										<div class="inputdropvalue yellowBg-{{$index+changeInputcol1}}" ng-show="activeArea===$index+changeInputcol1">
+											<p class="elem elem-1">{{dropobj1.length}}</p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{dropobj2.length}}</p><span class="elem elem-4 verticalAlign">=</span> <span class="elem elem-5">{{dropobj1.length+dropobj2.length}}</span></div>
+										<div class="inputdropFinalvalue" ind={{correctAnswer1.length-1}} ng-show="activeArea > $index+changeInputcol1"><p class="elem elem-1">{{correctAnswer1[$index+showans].val}}</p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{correctAnswer2[$index+showans].val}}</p> <span class="elem elem-4 verticalAlign">=</span> <span class="elem elem-5">{{correctAnswer1[$index+showans].val+correctAnswer2[$index+showans].val}}</span></div>
+										<!-- <span class="sr-only" >Addition fact {{$index+1}}:</span> -->
+									</div>
+								</div>
+								<div class="drop-values-3" ng-show="inputcolumn2 >0">
+									<div class="value-holder" ng-class="{'leftCenter': leftCent}" ng-repeat="x in inputValue2 track by $index" index={{$index}}>
+										<!-- <span class="sr-only" >Addition fact {{$index+1}}:</span> -->
+										<div class="inputdropvalue yellowBg-{{$index+changeInputcol2}}" ng-show="activeArea===$index+changeInputcol2"><p class="elem elem-1">{{dropobj1.length}}</p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{dropobj2.length}}</p> <span class="elem elem-4 verticalAlign">=</span> <span class="elem elem-5">{{dropobj1.length+dropobj2.length+1}}</span></div>
+										<div class="inputdropFinalvalue" ind1={{correctAnswer1.length-1}} ng-show="activeArea > $index+changeInputcol2"><p class="elem elem-1">{{correctAnswer1[$index+showans1].val}}</p><span class="elem elem-2 verticalAlign">+</span><p class="elem elem-3">{{correctAnswer2[$index+showans1].val}}</p> <span class="elem elem-4 verticalAlign">=</span> <span class="elem elem-5">{{correctAnswer1[$index+showans1].val+correctAnswer2[$index+showans1].val}}</span></div>
+
+									</div>
+								</div>
+								<div class="drop-area">
+									<div droppable class="drop-area-1" callback-fn="setDrop(arg)" index="{{$index}}"  aria-describedby="blueDropcontainer">
+										<span class="sr-only" id="blueDropcontainer">A tray for blue counters. Use Alt+5 to drop back the counters in the blue bin. There are {{dropobj1.length}} counters in blue tray .</span>
+										<div draggableobj1 drag-accessible class="drag-object-cont drop1"  index={{$index}} pIndex1="{{y.preIndex}}" pindex="{{preind}}" ng-repeat="y in dropobj1" source="blueDrop" ng-class="{'enabled': enableAll, 'disabled': !enableAll}">
+											<div class="drag-object" aria-describedby="blueDropcontainertray">
+												<span class="sr-only" id="blueDropcontainertray">Blue counter {{(y.preIndex)}}. Use Alt+5 to drop back the counters in the blue bin.</span>
+											</div>
+											<ul class="popup" ng-if="y.popupEnabled">
+												<li ng-repeat="y in dragAccessibility" ng-if="y.type=='blue'" index="{{$index}}">{{y.name}}</li>
+											</ul>
+										</div>
+									</div>
+									<div droppable1 class="drop-area-2" callback-fn="setDrop1(arg)" index="{{$index}}"  aria-describedby="greenDropcontainer">
+										<span class="sr-only" id="greenDropcontainer">A tray for green counters. Use Alt+5 to drop back the counters in the green bin. There are {{dropobj2.length}} counters in green tray.</span>
+										<div  draggableobj 	drag-accessible class="drag-object-cont drop2" index={{$index}}  pIndex1="{{y.preIndex}}" pindex="{{preind}}" ng-repeat="y in dropobj2" ng-drag="showCheck()" source="greenDrop" ng-class="{'enabled': enableAll, 'disabled': !enableAll}">
+											<div class="drag-object-green" aria-describedby="greenDropcontainertray">
+												<span class="sr-only" id="greenDropcontainertray">Green counter {{(y.preIndex)}}. Use Alt+5 to drop back the counters in the green bin.</span>
+											</div>
+											<ul class="popup" ng-if="y.popupEnabled">
+												<li ng-repeat="y in dragAccessibility" ng-if="y.type=='green'" index="{{$index}}">{{y.name}}</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+
+							</div>
+							<!-- <div ng-show="showNext" role="alert">
+							<span class="sr-only" id="greenDropcontainer" ng-show="equalsPrevious==0 "> showing one of the addition facts</span>
+							<span class="sr-only" id="greenDropcontainer" ng-show="chancesUsed==5"> No chances left. click Next</span>
+							<span class="sr-only" id="greenDropcontainer" ng-show="{{dropobj1.length+dropobj2.length}} == makeoption"> you successfully found the all addition facts. click next.</span>
+						</div> -->
+						<!-- <p id="expirationWarning" role="alert"  class="hidden">{{dropobj1.length}}blue counters +{{dropobj2.length}}green counters  = {{dropobj1.length+dropobj2.length}}counters.</p> -->
+						<button ng-disabled="!enableHowToPlay && !showNext" aria-label="How to play"  ng-mousedown="howDown=true" ng-mouseup="howDown=false" ng-mouseout="howDown=false" ng-class="{'down': howDown, 'enabled': enableHowToPlay, 'disabled': !enableHowToPlay}" dynamic-background=" howBtnBackground " class="help-play play-page" ng-click="helpClicked()"><div>How to play</div><span class="sr-only">click to go How to play page</span></button>
+						<button  class="check-btn" aria-label="Check" dynamic-background="checkBtnBackground"  	ng-click="checkanswer()" ng-show="validateAnswer == true" ><div>Check</div><span class="sr-only">click to check the value you have applied</span></button>
+						<button class="next-btn" aria-label="Next" ng-show="showNext" ng-click="tryagain()" ng-mousedown="nextDown=true" ng-mouseup="nextDown=false" ng-mouseout="nextDown=false" ng-class="{'down': nextDown}"><div>Next</div><span class="sr-only">click to proceed to next level </span></button>
+						<button class="finish-btn" aria-label="Finish" dynamic-background="finishBtnBackground" ng-show="finishbtn" ng-click="finsishClicked()"><div>Finish</div><span class="sr-only">click finish to leave the game </span></button>
+					</div>
+
+				</div>
+			</div>

@@ -1,0 +1,230 @@
+[
+	{
+		"filename":"s27.challenge.html",
+		"data": {
+			"file": 174410,
+			"id": 27,
+			"chances":7,
+			"activity_title": "Abacus - Order half hour times",
+			"courseTitle": "Order half hour times",
+			"audioPath": "content/assets/audios/s27-challenge/",
+			"imagePath": "content/assets/images/s27-challenge/",
+			"totalLevel": 3,
+			"totalChances": 7,
+			"level_1": {
+				"answer":  [
+					{
+						"time": "1-00",
+						"type": "static",
+						"id": 0
+					},
+					{
+						"time": "1-30",
+						"type": "blue",
+						"id": 1
+					},
+					{
+						"time": "2-00",
+						"type": "blue",
+						"id": 3
+					},
+					{
+						"time": "2-30",
+						"type": "green",
+						"id": 2
+					},
+					{
+						"time": "3-00",
+						"type": "green",
+						"id": 3
+					},
+					{
+						"time": "3-30",
+						"type": "blue",
+						"id": 2
+					},
+					{
+						"time": "4-00",
+						"type": "green",
+						"id": 1
+					},
+					{
+						"time": "4-30",
+						"type": "static",
+						"id": 0
+					}
+				]
+			},
+			"level_2": {
+				"answer":  [
+					{
+						"time": "5-00",
+						"type": "static",
+						"id": 0
+					},
+					{
+						"time": "5-30",
+						"type": "green",
+						"id": 2
+					},
+					{
+						"time": "6-00",
+						"type": "green",
+						"id": 1
+					},
+					{
+						"time": "6-30",
+						"type": "blue",
+						"id": 3
+					},
+					{
+						"time": "7-00",
+						"type": "blue",
+						"id": 2
+					},
+					{
+						"time": "7-30",
+						"type": "green",
+						"id": 3
+					},
+					{
+						"time": "8-00",
+						"type": "blue",
+						"id": 1
+					},
+					{
+						"time": "8-30",
+						"type": "static",
+						"id": 0
+					}
+				]
+			},
+			"level_3": {
+				"answer":  [
+					{
+						"time": "8-30",
+						"type": "static",
+						"id": 0
+					},
+					{
+						"time": "9-00",
+						"type": "blue",
+						"id": 1
+					},
+					{
+						"time": "9-30",
+						"type": "blue",
+						"id": 3
+					},
+					{
+						"time": "10-00",
+						"type": "green",
+						"id": 2
+					},
+					{
+						"time": "10-30",
+						"type": "green",
+						"id": 1
+					},
+					{
+						"time": "11-00",
+						"type": "static",
+						"id": 0
+					},
+					{
+						"time": "11-30",
+						"type": "blue",
+						"id": 2
+					},
+					{
+						"time": "12-00",
+						"type": "green",
+						"id": 3
+					}
+				]
+			},
+			"effects": [
+				{
+					"id": 0,
+					"audio": "button_click.mp3"
+				},
+				{
+					"id": 1,
+					"audio": "drag-mouse-down.mp3"
+				},
+				{
+					"id": 2,
+					"audio": "sound_drop_v2.mp3"
+				},
+				{
+					"id": 3,
+					"audio": "sound_success.mp3"
+				},
+				{
+					"id": 4,
+					"audio": "sound_failure.mp3"
+				},
+				{
+					"id": 5,
+					"audio": "sound_drag.mp3"
+				},
+				{
+					"id": 6,
+					"audio": "sound_blank.mp3"
+				},
+				{
+					"id": 7,
+					"audio": "sound_swap.mp3"
+				}
+			],
+			"narrations":[
+				{
+					"id": 0,
+					"content": "One of you can move the blue clock tiles and the other the green. Work together to drag the clocks onto the rack so that the times are in order.",
+					"audio": "narsound1.mp3"
+				},
+				{
+					"id": 1,
+					"content": "You use a chance when you move a tile. But, once in each question, you can click 'Link' to move a row of tiles along the rack without using any chances.",
+					"audio": "narsound10.mp3"
+				},
+				{
+					"id": 2,
+					"content": "Click on the clocks you want to move along the rack, then use the arrows to move them into empty spaces.",
+					"audio": "narsound2.mp3"
+				},
+				{
+					"id": 3,
+					"content": "Click 'Check' when you are both happy with your answer.",
+					"audio": "narsound3.mp3",
+					"bgColor": "orange"
+				},
+				{
+					"id": 4,
+					"content": "The rack is full but the times are not in the correct order. Talk about which clocks to move.",
+					"audio": "narsound4.mp3"
+				},
+				{
+					"id": 5,
+					"content": "You have used all your chances, but well tried. The correct order is shown here. Click 'Next' to continue.",
+					"audio": "narsound5.mp3"
+				},
+				{
+					"id": 6,
+					"content": "Well done. The rack is full and all the clocks are in the correct order. Click 'Next' to continue.",
+					"audio": "narsound6.mp3"
+				},
+				{
+					"id": 7,
+					"content": "Fantastic! The rack is full and all the clocks are in the correct order. Click 'Finish' to leave the game.",
+					"audio": "narsound7.mp3"
+				},
+				{
+					"id": 8,
+					"content": "You have used all your chances, but well tried. The correct order is shown here. Click 'Finish' to leave the game.",
+					"audio": "narsound8.mp3"
+				}
+			]
+		}
+	}
+]

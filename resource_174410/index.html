@@ -1,0 +1,167 @@
+<div class="s27-challenge" ng-class="{'device': isDevice,  'hover-device': hoverDevice}" data-ng-controller="s27ChallengeController" ng-init='model=getModel($index);setPageIndex(canvasArray[$index]);getPageIndex($index)'>
+	<script>
+	$(document).ready(function(){
+		var ele = $(".sr-only")
+		var position = ele.position();
+		if(position.left > 0){
+			setTimeout(function(){
+			$("button,div").each(function( index ) {
+						$(this).css('background-image','none');
+						$(this).off("mouseleave");
+						$(this).off("mouseenter");
+						$(this).off("mousedown");
+						$(this).off("mouseover");
+						$(this).off("mouseout");
+						//$(this).off("mouseout");
+						//$(this).off();
+						$(this).stop();
+						$(this).finish();
+				});
+				//angular.element(".close-clicked").scope().showingclose = false;
+				$(".close-clicked").hide();
+				$(".finish-btn").hide();
+				$(".next-btn").hide();
+				$(".check-btn").hide();
+				//$(".link-left-arrow").hide();
+				//$(".link-button").hide();
+				//$(".link-right-arrow").hide();
+			},500);
+
+
+		}else{
+
+		}
+
+	})
+	</script>
+	<div>
+		<audio id="effect_player_{{obj.id}}" ng-hide='false' ng-repeat="obj in effectsAudioArray">
+			<source preload src="{{obj.src}}" type="audio/mpeg">
+		</audio>
+	</div>
+	<div class="header-bar">
+		<div pearson-logo></div>
+		<button ng-show="currentPage!='how'" class="effect-btn dis-ass" ng-click="!enalbeNarrationBut || effectClick();">
+			{{effectDispText}}
+			<span class="sr-only" ng-show="effectDispText == 'Sound: on'">Activate to turn off</span>
+			<span class="sr-only" ng-show="effectDispText == 'Sound: off'">Activate to turn on</span>
+		</button>
+		<button ng-show="currentPage!='how'" class="narration-btn voice-btn dis-ass" ng-click="!enalbeNarrationBut || narrationClick();">
+			{{narrationDispText}}
+			<span class="sr-only" ng-show="narrationDispText == 'Voice: on'">Activate to turn off</span>
+			<span class="sr-only" ng-show="narrationDispText == 'Voice: off'">Activate to turn on</span>
+		</button>
+		<button class="close_button dis-ass" ng-click="showClosealert($event)">
+			<span class="sr-only">Close It has a popup</span>
+		</button>
+		<div id="rootCloseBtn" class="close-clicked" ng-show="showingclose" >
+			<div class="overlay"></div>
+			<div role="document">
+				<div class="close-box" id="closebox" ng-blur="parentexitBlur($event)" role="dialog" aria-describedby="dialogContent">
+					<span id="dialogContent">Are you sure you want to leave the game?</span>
+					<button class="no_btn" ng-mousedown="getMouseDown()" ng-click="hideClosealert($event)"><div>Keep playing</div></button>
+					<button class="yes_btn" ng-blur="exitBlur($event)" ng-mousedown="getMouseDown()" ng-click="closePage()" ><div>Exit</div></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<audio id="narration-audio" narration-audio style="position:absolute;z-index:100;">
+		<source src="assets/audio/male/_0.mp3" type="audio/mpeg">
+	</audio>
+	<audio id="effect-audio" effect-audio>
+		<source src="assets/audio/male/_0.mp3" type="audio/mpeg">
+	</audio>
+
+	<div class="home-screen page" ng-show="currentPage=='home'">
+		<h1>{{model.courseTitle}}</h1>
+		<button aria-label="How to play" class="how-btn" ng-click="howClick()" ng-mousedown="howDown=true" ng-mouseup="howDown=false" ng-mouseout="howDown=false" ng-class="{'down': howDown}" dynamic-background="howBtnBackground"><div>How to play</div><span class="sr-only">click to go How to play page</span></button>
+		<button aria-label="Play" class="play-btn" ng-click="playClick()" ng-mousedown="playDown=true" ng-mouseup="playDown=false" ng-mouseout="playDown=false" ng-class="{'down': playDown}" dynamic-background="playBtnBackground"><div>Play</div><span class="sr-only">click to play the lesson</span></button>
+	</div>
+	<div class="how-screen page" ng-if="currentPage=='how'">
+		<iframe style="margin:0px;background:transparent;" src="{{helpPath}}"></iframe>
+		<button id="game-btn" style="visibility:hidden" ng-click="gameClick()" aria-label="Go to game" ng-mousedown="gameDown=true" ng-mouseup="gameDown=false" ng-mouseout="gameDown=false" ng-class="{'down': gameDown}"><div>Go to game</div></button>
+	</div>
+	<div class="play-screen page" ng-show="currentPage=='play'">
+		<div class="narration-container {{narrationBg}}" dynamic-background="audioContainerBackground">
+			<div class="narration-inner" dynamic-backgroundv2="audioBtnBackground">
+				<button ng-disabled="!enableHowToPlay" aria-label="listen to instructions" tabindex="0" class="audio-btn" 
+				ng-click="narationClick()" ng-mousedown="audioDown=true" ng-mouseup="audioDown=false" ng-mouseout="audioDown=false" 
+				ng-class="{'down': audioDown}"><span class="sr-only">Instruction audio</span><img  class="audio-btn1"></img>
+				</button>
+				<p my-enter="narationClick()" role="alert" ng-click="narationClick()">{{model.narrations[currentNarrationId].content}}</p>
+			</div>
+		</div>
+
+		<div class="chances" ng-show="chanceShow" dynamic-background="chanceContainerBackground" aria-label="7 star chances."> <div id="chancetext">Chances</div>
+			<div class="star-glow" aria-hidden="true" ng-repeat="chance in chancesArr track by $index" ng-style="chance.hide && {'opacity':0} || {'opacity':1}">
+				<div class="star" dynamic-background="chanceStarBackground" ng-if="!chance.used"></div>
+				<span  class="sr-only" ng-show="chanceUsed == 0">You have {{totalChances-chanceUsed}} chances left.</span>
+				<span ng-if="chance.used"><img class="star" ng-src="{{chanceEndStarBackground.out + '?' + chance.randomNum}}" ></img></span>
+			</div>
+			<div id="loadGif"></div>
+
+		</div>
+
+		<div class="link-button-container">
+			<button class="link-left-arrow" aria-label="Move to left" ng-disabled="!enableAll || linkDisabled" ng-show="isLinkSelected" ng-init="onDown = false;" ng-class="{'on-down': (linkDisabled && onDown)}" ng-mousedown="onDown=true" ng-mouseup="onDown=false" ng-mouseout="onDown=false" ng-click="isLinkSelected && onLinkLeft();"></button>
+			<button class="link-button" dynamic-background="linkButtonBackground" aria-label="Link moves the selected clock in left or right direction" ng-disabled="!enableAll || linkDisabled" ng-init="onDown = false;" ng-class="{'on-down': (linkDisabled && onDown),'linkdown':isLinkSelected,'enabled': (!linkDisabled)}" ng-mousedown="onDown=true" ng-mouseup="onDown=false" ng-mouseout="onDown=false" ng-click="onLink();playEffectAudio();" ng-show="!isLinkUsed"><div>Link</div></button>
+			<button class="link-right-arrow" aria-label="Move to right" ng-disabled="!enableAll || linkDisabled" ng-show="isLinkSelected" ng-init="onDown = false;" ng-class="{'on-down': (linkDisabled && onDown)}" ng-mousedown="onDown=true" ng-mouseup="onDown=false" ng-mouseout="onDown=false" ng-click="isLinkSelected && onLinkRight();"></button>
+		</div>
+		<div class="clock-holder-container" aria-label="A rack with 8 spaces having the first and last spaces occupied by clocks.">
+			<div class="answer-clocks" ng-repeat="clock in clocks track by $index" ng-style="{'left': (20 + ($index * 84))}" ng-class="[{'static': (clock.type == 'static' || showAnswer)}]">
+				<div id="dropElement-{{$index}}" droppable drag-store="currentlyDragging" drop-prop="clock" on-drop="onDrop(arg)" class="drop-area" ng-if="clock.type != 'static'" aria-selected="true">
+					<span class="sr-only">Empty space in the rack for {{clockStr[$index]}} clock.</span>
+				</div>
+				<div class="dial" ng-if="clock.type == 'static' || showAnswer" >
+					<span class="sr-only">{{clockStr[$index]}} clock in the rack showing the time as {{clock.time}}.</span>
+					<div class="small-needle" ng-style="{'transform': 'rotate('+clock.rotation.minute+'deg)', '-webkit-transform': 'rotate('+clock.rotation.minute+'deg)', '-ms-transform': 'rotate('+clock.rotation.minute+'deg)'}"></div>
+					<div class="big-needle" ng-style="{'transform': 'rotate('+clock.rotation.hour+'deg)', '-webkit-transform': 'rotate('+clock.rotation.hour+'deg)', '-ms-transform': 'rotate('+clock.rotation.hour+'deg)'}"></div>
+				</div>
+				<div draggable ng-repeat="dropped in clock.droppedItem track by dropId" drag-accessible drag-store="currentlyDragging" drag-prop="dropped" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" source="{obj: clock, type: 'answer'}" enable-all="enableAll"  ng-class="[dropped.type, {'linked': clock.isLinked}]" class="dropped-clock" ng-if="!showAnswer" ng-click="onClockLinkSelection(clock);" my-enter="onClockLinkSelection(clock);" ng-style="dropped._hide && {'opacity':0} || {'opacity':1}">
+					<div class="dial" ng-class="{'isDraggable': !disabledAnswerDraggable}">
+						<div class="small-needle" ng-style="{'transform': 'rotate('+dropped.rotation.minute+'deg)', '-webkit-transform': 'rotate('+dropped.rotation.minute+'deg)', '-ms-transform': 'rotate('+dropped.rotation.minute+'deg)'}"></div>
+						<div class="big-needle" ng-style="{'transform': 'rotate('+dropped.rotation.hour+'deg)', '-webkit-transform': 'rotate('+dropped.rotation.hour+'deg)', '-ms-transform': 'rotate('+dropped.rotation.hour+'deg)'}"></div>
+					</div>
+					<ul class="popup" ng-if="dropped.popupEnabled">
+						<li ng-repeat="y in dropAccessibility" index="{{$index}}" ng-if="(y.type =='answer' && y.name != clock.dropId) || dropped.type == y.type">{{y.name}}</li>
+					</ul>
+				</div>
+
+			</div>
+		</div>
+		<div class="sr-only" id="sr-text" aria-live="polite" aria-atomic="true"></div>
+		<div class="sr-only" id="update-text" aria-live="polite" aria-atomic="true"></div>
+		<div class="blue-box-container" role="application">
+			<div  draggable drag-accessible drag-store="currentlyDragging" drag-prop="clock" ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" source="{obj: blueClocks, type: 'blue'}" enable-all="enableAll" class="draggable" ng-class="['stack_' + blueLen]" ng-repeat="clock in blueClocks track by $index" ng-style="$index+1 == blueLen && {'opacity':1} || {'opacity':0}">
+				<span class="sr-only" >Blue player clock showing the time as {{clock.time}} has popup.</span>
+				<div class="dial"  ng-show="currentDragSourceType != 'blue' " ng-class="{'isDraggable': !disableDraggable}">
+					<div class="small-needle" ng-style="{'transform': 'rotate('+clock.rotation.minute+'deg)', '-webkit-transform': 'rotate('+clock.rotation.minute+'deg)', '-ms-transform': 'rotate('+clock.rotation.minute+'deg)'}"></div>
+					<div class="big-needle" ng-style="{'transform': 'rotate('+clock.rotation.hour+'deg)', '-webkit-transform': 'rotate('+clock.rotation.hour+'deg)', '-ms-transform': 'rotate('+clock.rotation.hour+'deg)'}"></div>
+				</div>
+				<ul class="popup" ng-if="clock.popupEnabled">
+					<li ng-repeat="y in dropAccessibility" index="{{$index}}" ng-if="y.type =='answer'">{{y.name}}</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="green-box-container" role="application">
+			<div draggable drag-accessible drag-store="currentlyDragging" drag-prop="clock" ng-mousedown="playEffectAudio();"  drag-start="dragStart(arg)" drag-stop="dragStop(arg)" source="{obj: greenClocks, type: 'green'}" enable-all="enableAll" class="draggable" ng-class="['stack_' +greenLen]" ng-repeat="clock in greenClocks track by $index" ng-style="$index+1 == greenLen && {'opacity':1} || {'opacity':0}">
+				<span class="sr-only">Green player clock showing the time as {{clock.time}} has popup.</span>
+				<div  class="dial" ng-show="currentDragSourceType != 'green'" ng-class="{'isDraggable': !disableDraggable}">
+					<div class="small-needle" ng-style="{'transform': 'rotate('+clock.rotation.minute+'deg)', '-webkit-transform': 'rotate('+clock.rotation.minute+'deg)', '-ms-transform': 'rotate('+clock.rotation.minute+'deg)'}"></div>
+					<div class="big-needle" ng-style="{'transform': 'rotate('+clock.rotation.hour+'deg)', '-webkit-transform': 'rotate('+clock.rotation.hour+'deg)', '-ms-transform': 'rotate('+clock.rotation.hour+'deg)'}" ></div>
+				</div>
+				<ul class="popup" ng-if="clock.popupEnabled">
+					<li ng-repeat="y in dropAccessibility" index="{{$index}}" ng-if="y.type =='answer'">{{y.name}}</li>
+				</ul>
+			</div>
+		</div>
+
+
+		<button ng-disabled="!enableHowToPlay" class="how-btn" aria-label="How to play" ng-click="howClick()" ng-mousedown="howDown=true" ng-mouseup="howDown=false" ng-mouseout="howDown=false" ng-class="{'down': howDown, 'enabled': enableHowToPlay, 'disabled': !enableHowToPlay}" dynamic-background="howBtnBackground"><div>How to play</div><span class="sr-only">click to go How to play page</span></button>
+		<button ng-disabled="!enableAll" class="flip-btn" aria-label="Flip" ng-click="flipClick()" ng-mousedown="flipClicked || (flipDown=true)" ng-mouseup="flipDown=false" ng-mouseout="flipDown=false" ng-class="{'down': flipDown, 'clicked': flipClicked, 'enabled': enableAll, 'disabled': !enableAll}" ng-show="false"><div>Flip</div><span class="sr-only">Flip turns the selected domino around</span></button>
+		<button ng-show="showCheckButton" class="check-btn enabled" aria-label="Check" ng-click="checkClick()" ng-mousedown="checkDown=true" ng-mouseup="checkDown=false" ng-mouseout="checkDown=false" ng-class="{'down': checkDown}" dynamic-background="checkBtnBackground"><div>Check</div><span class="sr-only">click to check the value you have applied</span></button>
+		<button ng-show="showNextButton" class="next-btn enabled" aria-label="Next" ng-click="nextClick()" ng-mousedown="nextDown=true" ng-mouseup="nextDown=false" ng-mouseout="nextDown=false" ng-class="{'down': nextDown}"><div>Next</div><span class="sr-only">click to proceed to the next level</span></button>
+		<button ng-show="showFinishButton" class="finish-btn enabled" aria-label="Finish" ng-click="finishClick()" ng-mousedown="finishDown=true" ng-mouseup="finishDown=false" ng-mouseout="finishDown=false" ng-class="{'down': finishDown}" dynamic-background="finishBtnBackground"><div>Finish</div><span class="sr-only">click finish to leave the game </span></button>
+	</div>
+</div>

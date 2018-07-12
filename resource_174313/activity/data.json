@@ -1,0 +1,263 @@
+[
+	{
+		"filename":"sl011.challenge.view.html",
+		"data":{
+			"id":11,
+			"audioPath": "content/assets/audios/sl011-challenge/",
+			"imagePath": "content/assets/images/sl011-challenge/",
+			"dynamicAudios": [
+				{"id": 0, "audio": "no.mp3"},
+				{"id": 1, "audio": "_1.mp3"},
+				{"id": 2, "audio": "_2.mp3"},
+				{"id": 3, "audio": "_3.mp3"},
+				{"id": 4, "audio": "_4.mp3"},
+				{"id": 5, "audio": "_5.mp3"},
+				{"id": 6, "audio": "_6.mp3"},
+				{"id": 7, "audio": "_7.mp3"},
+				{"id": 8, "audio": "_8.mp3"},
+				{"id": 9, "audio": "_9.mp3"},
+				{"id": 10, "audio": "_10.mp3"},
+				{"id": 11, "audio": "_11.mp3"},
+				{"id": 12, "audio": "_12.mp3"}
+			],
+			"effects":[
+				{
+					"id": 0,
+					"audio": "button-click.mp3"
+				},
+				{
+					"id": 1,
+					"audio": "sound-blank-square.mp3"
+				},
+				{
+					"id": 2,
+					"audio": "sound_neutralnoise.mp3"
+				},
+				{
+					"id": 3,
+					"audio": "sound_success.mp3"
+				},
+				{
+					"id":4,
+					"audio": "sound_drop.mp3"
+				},
+				{
+					"id":5,
+					"audio": "sound_failure.mp3"
+				}
+			],
+			"narrations":[
+				{
+					"id": 0,
+					"content": "You need {{CORRECT_COUNT}} counters in the tray altogether. One of you can move the blue counters, and the other the green. Make five different addition facts for {{CORRECT_COUNT}}.",
+					"audio": "narsound1a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound1b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"}
+					]
+				},
+				{
+					"id": 1,
+					"content": "Click 'Check' when you are both happy that you have {{CORRECT_COUNT}} counters altogether in the tray.",
+					"audio": "narsound3a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound3b.mp3"}
+					]
+				},
+				{
+					"id": 2,
+					"content": "You don't have {{CORRECT_COUNT}} counters altogether in the tray. Talk about which counters you need to move.",
+					"audio": "narsound4a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound4b.mp3"}
+					]
+				},
+				{
+					"id": 3,
+					"content": "You have already made {{CORRECT_COUNT}} in that way. Try again.",
+					"audio": "narsound10a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound10b.mp3"}
+					]
+				},
+				{
+					"id": 4,
+					"content": "Well done, you've found 1 way to make {{CORRECT_COUNT}}. Your addition fact has gone into the list. Now find a different way to make {{CORRECT_COUNT}}.",
+					"audio": "narsound7a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound7b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"}
+					]
+				},
+				{
+					"id": 5,
+					"content": "You still don't have {{CORRECT_COUNT}} counters in the tray. Look at this way you could make {{CORRECT_COUNT}}. Click 'Next' when ready to continue.",
+					"audio": "narsound11a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound11b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound11c.mp3"}
+					]
+				},
+				{
+					"id": 6,
+					"content": "Well done, you've found 1 way to make {{CORRECT_COUNT}}. Your addition fact has gone into the list. Now find a different way to make {{CORRECT_COUNT}}.",
+					"audio": "narsound7a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound7b.mp3"}
+
+					]
+				},
+				{
+					"id": 7,
+					"content": "Fantastic, you have found 5 ways to make {{CORRECT_COUNT}}. Click 'Finish' to leave the game.",
+					"audio": "narsound16a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound16b.mp3"}
+					]
+				},
+				{
+					"id": 8,
+					"content": "Fantastic, you have found 5 ways to make {{CORRECT_COUNT}}. Click 'Next' to continue.",
+					"audio": "narsound9a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound9b.mp3"}
+					]
+				},
+				{
+					"id": 9,
+					"content": "Now use your blue and green counters to make {{CORRECT_COUNT}} altogether. Try to find five different addition facts for {{CORRECT_COUNT}}.",
+					"audio": "narsound2a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound2b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"}
+					]
+				},
+				{
+					"id": 10,
+					"content": "Now try again to make {{CORRECT_COUNT}} altogether. Click 'Check' when you're both happy with your answer.",
+					"audio": "narsound12a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound12b.mp3"}
+					]
+				},
+				{
+					"id": 11,
+					"content": "That's not correct. You've used all your chances. You found {{score}} ways to make {{CORRECT_COUNT}} counters altogether. Click 'Next' to continue.",
+					"audio": "narsound5a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "score"},
+						{"audio": "narsound5b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound5c.mp3"}
+					]
+				},
+				{
+					"id": 12,
+					"content": "That's not correct. You've used all your chances. You found no ways to make {{CORRECT_COUNT}} counters altogether. Click 'Next' to continue.",
+					"audio": "narsound4a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound4b.mp3"}
+					]
+				},
+				{
+					"id": 13,
+					"content": "That's not correct. You've used all your chances. You found {{score}} ways to make {{CORRECT_COUNT}} counters altogether. Click 'Finish' to leave the game.",
+					"audio": "narsound6a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "score"},
+						{"audio": "narsound6b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound6c.mp3"}
+					]
+				},
+				{
+					"id": 14,
+					"content": "That's not correct. You've used all your chances. You found no ways to make {{CORRECT_COUNT}} counters altogether. Click 'Finish' to leave the game.",
+					"audio": "nar-sound7.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound4b.mp3"}
+					]
+				},
+				{
+					"id": 15,
+					"content": "That's not correct. You've used all your chances. You found {{score}} ways to make {{CORRECT_COUNT}} counters altogether. Click 'Finish' to leave the game.",
+					"audio": "nar-sound7.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound4b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound4b.mp3"}
+					]
+				},
+				{
+					"id": 16,
+					"content": "Great, you've found {{score}} ways to make {{CORRECT_COUNT}}. Try another way.",
+					"audio": "narsound8a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "score"},
+						{"audio": "narsound8b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound8c.mp3"}
+					]
+				},
+				{
+					"id": 17,
+					"content": "That's not correct. You've used all your chances. You found {{score}} way to make {{CORRECT_COUNT}} counters altogether. Click 'Next' to continue.",
+					"audio": "narsound5a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "score"},
+						{"audio": "narsound14b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound5c.mp3"}
+					]
+				},
+				{
+					"id": 18,
+					"content": "That's not correct. You've used all your chances. You found {{score}} way to make {{CORRECT_COUNT}} counters altogether. Click 'Finish' to leave the game.",
+					"audio": "narsound6a.mp3",
+					"continuation": [
+						{"audio": "", "dynamic": "score"},
+						{"audio": "narsound14b.mp3"},
+						{"audio": "", "dynamic": "CORRECT_COUNT"},
+						{"audio": "narsound6c.mp3"}
+					]
+				}
+			],
+			"homepageTitle":"Make 7 and 10",
+			"toatalChances": 5,
+
+			"makeOptions":[
+				{
+					"number":7,
+					"requiredPossibilites" : "5",
+					"inputcolrowNo" : 5,
+					"inputcolrowNo1" : 0,
+					"inputcolrowNo2" : 0
+
+				},
+				{
+					"number":10,
+					"requiredPossibilites" : "5",
+					"inputcolrowNo" : 5,
+					"inputcolrowNo1" : 0,
+					"inputcolrowNo2" : 0
+				}
+
+			]
+		}
+	}
+]

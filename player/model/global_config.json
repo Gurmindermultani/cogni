@@ -1,0 +1,22 @@
+{
+	"paths": {
+		"data": {
+			"__cdata": "model/"
+		},
+		"configuration": {
+			"__cdata": "activity/"
+		},
+		"html": {
+			"__cdata": "content/partials/"
+		},
+		"course_image": {
+			"__cdata": "content/partials/"
+		},
+		"page_image": {
+			"__cdata": "content/assets/images/"
+		},
+		"shell_image": {
+			"__cdata": "assets/images/"
+		}
+	}
+}

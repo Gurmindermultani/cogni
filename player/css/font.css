@@ -1,0 +1,141 @@
+  @font-face {
+  font-family: 'HeinemannRoman-Bd';
+src: url('../assets/fonts/HeinemannRoman-Bd.eot');
+  src: url('../assets/fonts/HeinemannRoman-Bd.otf')format("opentype"),
+      url('../assets/fonts/HeinemannRoman-Bd.woff') format('woff'),
+      /* url('../assets/fonts/HeinemannRoman-Bd.woff2') format('woff2'), */
+      url('../assets/fonts/HeinemannRoman-Bd.ttf')  format('truetype');
+
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+font-family: 'HeinemannRoman-BdIt';
+src: url('../assets/fonts/HeinemannRoman-BdIt.eot');
+src: url('../assets/fonts/HeinemannRoman-BdIt.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRoman-BdIt.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRoman-BdIt.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRoman-BdIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+@font-face {
+font-family: 'HeinemannRoman-Blk';
+src: url('../assets/fonts/HeinemannRoman-Blk.eot');
+ src: url('../assets/fonts/HeinemannRoman-Blk.otf')format("opentype"),
+      url('../assets/fonts/HeinemannRoman-Blk.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRoman-Blk.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRoman-Blk.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRoman-BlkIt';
+src: url('../assets/fonts/HeinemannRoman-BlkIt.eot');
+src: url('../assets/fonts/HeinemannRoman-BlkIt.otf')format("opentype"),
+      url('../assets/fonts/HeinemannRoman-BlkIt.woff') format('woff'),
+      /* url('../assets/fonts/HeinemannRoman-BlkIt.woff2') format('woff2'), */
+      url('../assets/fonts/HeinemannRoman-BlkIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRoman-Rm';
+src: url('../assets/fonts/HeinemannRoman-Rm.eot');
+src: url('../assets/fonts/HeinemannRoman-Rm.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRoman-Rm.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRoman-Rm.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRoman-Rm.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRoman-RmIt';
+src: url('../assets/fonts/HeinemannRoman-RmIt.eot');
+src: url('../assets/fonts/HeinemannRoman-RmIt.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRoman-RmIt.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRoman-RmIt.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRoman-RmIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-Bd';
+src: url('../assets/fonts/HeinemannRomanSpecial-Bd.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-Bd.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRomanSpecial-Bd.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRomanSpecial-Bd.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRomanSpecial-Bd.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-BdIt';
+src: url('../assets/fonts/HeinemannRomanSpecial-BdIt.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-BdIt.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRomanSpecial-BdIt.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRomanSpecial-BdIt.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRomanSpecial-BdIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-Blk';
+src: url('../assets/fonts/HeinemannRomanSpecial-Blk.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-Blk.otf')format("opentype"),
+     url('../assets/fonts/HeinemannRomanSpecial-Blk.woff') format('woff');
+    /* url('../assets/fonts/HeinemannRomanSpecial-Blk.woff2') format('woff2'), */
+    /* url('../assets/fonts/HeinemannRomanSpecial-Blk.ttf')  format('truetype'); */
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-BlkIt';
+src: url('../assets/fonts/HeinemannRomanSpecial-BlkIt.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-BlkIt.otf')format("opentype"),
+  url('../assets/fonts/HeinemannRomanSpecial-BlkIt.woff') format('woff'),
+  /* url('../assets/fonts/HeinemannRomanSpecial-BlkIt.woff2') format('woff2'), */
+  url('../assets/fonts/HeinemannRomanSpecial-BlkIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-Rm';
+src: url('../assets/fonts/HeinemannRomanSpecial-Rm.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-Rm.otf')format("opentype"),
+    url('../assets/fonts/HeinemannRomanSpecial-Rm.woff') format('woff'),
+    /* url('../assets/fonts/HeinemannRomanSpecial-Rm.woff2') format('woff2'), */
+    url('../assets/fonts/HeinemannRomanSpecial-Rm.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}
+
+@font-face {
+font-family: 'HeinemannRomanSpecial-RmIt';
+src: url('../assets/fonts/HeinemannRomanSpecial-RmIt.eot');
+src: url('../assets/fonts/HeinemannRomanSpecial-RmIt.otf')format("opentype"),
+     url('../assets/fonts/HeinemannRomanSpecial-RmIt.woff') format('woff'),
+     /* url('../assets/fonts/HeinemannRomanSpecial-RmIt.woff2') format('woff2'), */
+     url('../assets/fonts/HeinemannRomanSpecial-RmIt.ttf')  format('truetype');
+
+font-weight: normal;
+font-style: normal;
+}

@@ -1,0 +1,185 @@
+html, body{
+	margin:0;
+	padding: 0;
+	-webkit-tap-highlight-color: transparent;
+	/* max-width: 1024px;
+	max-height:660px;
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto; */
+}
+.sr-only
+{position:absolute;
+	left:-10000px;
+	top:auto;
+	width:1px;
+	height:1px;
+	overflow:hidden;}
+	/*
+	.pre-loader{
+	max-width: 1024px;
+	max-height:660px;
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-family: HeinemannRoman-Blk;
+	z-index: 9999;
+}
+.pre-loader img{
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+margin: auto;
+}
+*/
+.activity_view{
+	width:100%;
+	height:100%;
+}
+#activity{
+	width: 100%;
+	height:100%;
+}
+.player-audio-effect{
+	display: none;
+}
+.activity-container{
+	width:100%;
+	height:100%;
+	float:left;
+	margin-left:0px;
+	border-radius:0px 0px 10px 10px;
+}
+.activity{
+	width:100%;
+	height:100%;
+	float:left;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select:none;
+}
+#activity-holder{
+	over-flow:hidden;
+}
+.wrapper{
+	max-width: 1024px;
+	max-height:660px;
+	width:100%;
+	height:100%;
+	position: relative;
+	margin:0 auto;
+	overflow:hidden;
+	font-family: HeinemannRoman-Rm;
+}
+#student-edition{
+	max-width: 1024px;
+	max-height:660px;
+	width:100%;
+	height:100%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	font-family: HeinemannRoman-Rm;
+
+}
+.preloader-container{
+	width:178px;
+	height:172px;
+	margin:0 auto;
+	/*background-image: url("../assets/images/preloader.gif");*/
+}
+.how-to-play{
+	background-image: url("../assets/images/spinner48px.gif");
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.preloader{
+	margin: 0 auto;
+	height: 120px;
+	width: 120px;
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+.preload-text{
+	color:gray;
+	left:100px;
+	width:100%;
+	margin:0 auto;
+	left:100px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.activity > div{
+	height:100%;
+}
+#activity-wrapper{
+	width: 100%;
+	height: 100%;
+	float: left;
+	overflow: hidden;
+	background-color: #FFFFCC;
+}
+#activity{
+	overflow:hidden;
+}
+#activity_view{
+	float:left;
+	width:100%;
+
+}
+#FooterWrapperView{
+	float:left;
+	width:100%;
+}
+.header-bar button{
+	border:none;
+	background-color: transparent;
+	color:white;
+	font-size: 16px;
+	position: absolute;
+	right: 185px;
+	height: 30px;
+	cursor: pointer;
+	padding: 0 10px !important;
+}
+.device .header-bar button{
+	padding-top: 5px !important;
+}
+.header-bar button:hover{
+	background-color: #6D6D6D;
+}
+.hover-device .header-bar button:hover{
+	background-color: transparent;
+}
+.header-bar button.voice-btn{
+	position: absolute;
+	right: 75px;
+}
+button{border: none;     background: transparent;}
+button {
+	font-family: HeinemannRoman-Rm;
+}
+button label{ visibility:hidden;}
+*:focus {
+	 outline: black dotted 3px;
+}
+body:focus, html:focus {
+	 outline: none;
+}

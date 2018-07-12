@@ -1,0 +1,5 @@
+resource_174313:
+Implemented keyboard accessibility, Screen reader text & CSS removal.
+
+resource_174410:
+Implemented HighContrast mode expectation. 
