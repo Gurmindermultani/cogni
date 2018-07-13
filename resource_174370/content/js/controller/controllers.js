@@ -240,6 +240,7 @@ $scope.currentChances = 3;
 $scope.allDropped = [];
 $scope.shapesPlayed = 0;
 
+$scope.totalShapesPlayed = 0;
 
 $scope.firstSelected = false;
 $scope.enableSelection = false;
@@ -297,7 +298,12 @@ $scope.selectShape = function(shape){
 			$(".finish-btn").show();
 		}
 		screenReader("This " + shape + " is deselected.");
-
+		$scope.currentNarrationId = 0;
+		$scope.changeNarrationSrc();
+		if($scope.shapesPlayed > 0){
+			$scope.currentNarrationId = 21;
+			$scope.changeNarrationSrc(21);
+		}
 		return;
 	}
 	//change status
@@ -307,18 +313,14 @@ $scope.selectShape = function(shape){
 	}
 	$scope.threeDshapes[shape].status = "selected";
 	screenReader("This " + shape + " is selected.");
-
+	$scope.currentNarrationId = 1;
+	$scope.changeNarrationSrc();
 	$scope.selectedShape = shape;
-	if(!$scope.firstSelected){
-		$scope.currentNarrationId = 1;
-		$scope.changeNarrationSrc();
-		var array = [inner+"content/assets/audios/sl026-challenge/"+$scope.model.narrations[1].audio];
-		if(!isNarationMuted){
-			$timeout(function(){
-				sharedService.broadcastItem('createAudioElement', {"array":array,"gender":"male"})
-			},100);
-		}
-		$scope.firstSelected = true;
+	$scope.currentNarrationId = 1;
+	$scope.changeNarrationSrc(1);
+	if(!$scope.model.narrations[$scope.currentNarrationId].playedOnce) {
+		$scope.playNaration();
+		$scope.model.narrations[$scope.currentNarrationId].playedOnce = true;
 	}
 	$scope.showNext = true;
 	$(".next-btn").show();
@@ -330,7 +332,7 @@ $scope.selectShape = function(shape){
 $scope.nextClicked = function(){
 	screenReader("Next Clicked.");
 	$scope.changeEffect(0);
-
+	$scope.stopNaration();
 	$(".sound-btn").focus();
 	
 	if($scope.showDemo){
@@ -357,6 +359,7 @@ $scope.nextClicked = function(){
 	}
 	if($scope.currentChances === 0){
 		//show how its done
+		$scope.totalShapesPlayed += 1;
 		$scope.currentNarrationId = 10;
 		$scope.changeNarrationSrc(10);
 		if(!$scope.model.narrations[$scope.currentNarrationId].playedOnce) {
@@ -370,15 +373,27 @@ $scope.nextClicked = function(){
 			$("#prev").attr("disabled", true);
 	    	$("#pause").hide();
 		},100);
+		if($scope.totalShapesPlayed === 6){
+			$scope.finishbtn =true;
+			$(".finish-btn").show();
+			$scope.showNext = false;
+			$(".next-btn").hide();
+		}
 	}else{
 		$scope.currentNarrationId = 2;
 		$scope.changeNarrationSrc(2);
 		if(!$scope.model.narrations[$scope.currentNarrationId].playedOnce) {
 			$scope.playNaration();
 			$scope.model.narrations[$scope.currentNarrationId].playedOnce = true;
-			$timeout(function(){
+			if(!isNarationMuted){
+				$timeout(function(){
+					$scope.enableAll = true;
+				},6000);
+			}else{
 				$scope.enableAll = true;
-			},6000);
+				
+			}
+			
 		}else{
 			$scope.enableAll = true;
 
@@ -404,8 +419,9 @@ $scope.playClicked = function(){
 	$scope.enableHowToPlay = false;
 	$scope.enableAll = false;
 	$scope.enableSelection = false;
+	$scope.shapesPlayed = 0;
+
 	if (isNarationMuted) {
-		$scope.enableAll = true;
 		$scope.enableHowToPlay = true;
 		$scope.currentNarrationId = 0;
 
@@ -451,13 +467,26 @@ $scope.dragStart = function (event) {
 $scope.dragStop = function (event) {
 	//
 	//console.log(event);
+	$scope.changeEffect(4);
+
 
 }
 
 
 $scope.setDrop = function (arg) {
-	screenReader($scope.model.altText[arg.arg.type] +  " is dropped.");
-	$scope.changeEffect(4);
+	//Green print of large circle dragged from green player region to and dropped to yellow box region.
+	if(arg.arg.source === "blueDrag"){
+		screenReader($scope.model.altText[arg.arg.type] +  " dragged from blue player region and dropped to yellow box region.");
+	}
+	if(arg.arg.source === "greenDrag"){
+		screenReader($scope.model.altText[arg.arg.type] +  " dragged from green player region and dropped to yellow box region.");
+	}
+	if(arg.arg.source === "blueDrop"){
+		screenReader($scope.model.altText[arg.arg.type] +  " dragged from yellow box region and dropped to blue player region.");
+	}
+	if(arg.arg.source === "greenDrop"){
+		screenReader($scope.model.altText[arg.arg.type] +  " dragged from yellow box region and dropped to green player region.");
+	}
 	$scope.allDropped = arg.arg.allDropped;
 	if($scope.allDropped.length > 0){
 		$scope.showCheck();
@@ -1022,6 +1051,7 @@ $scope.changeEffect = function (n) {
 $scope.gameClick = function () {
 	$scope.currentPage = $scope.prevPage;
 	$scope.changeEffect(0);
+	setTimeout(function(){$(".sound-btn").focus();},100);
 }
 $scope.helpClicked = function(){
 	$scope.prevPage = $scope.currentPage;

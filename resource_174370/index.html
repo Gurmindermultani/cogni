@@ -108,32 +108,32 @@
 						<div class="square">
 							<span class="sr-only">Square {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="square" tabindex="0" my-enter="selectShape('square')" ng-disabled="enableAll" ng-click="selectShape('square')" ng-src="{{inner + model.imagePath + 'square_' + threeDshapes['square']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['square']['altText']}}" tabindex="0" my-enter="selectShape('square')" ng-disabled="enableAll" ng-click="selectShape('square')" ng-src="{{inner + model.imagePath + 'square_' + threeDshapes['square']['status'] +'.png'}}">
 						</div>
 						<div class="rect">
 							<span class="sr-only">Rect {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="rect" tabindex="0" my-enter="selectShape('rect')" ng-disabled="enableAll" ng-click="selectShape('rect')" ng-src="{{inner + model.imagePath + 'rect_' + threeDshapes['rect']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['rect']['altText']}}" tabindex="0" my-enter="selectShape('rect')" ng-disabled="enableAll" ng-click="selectShape('rect')" ng-src="{{inner + model.imagePath + 'rect_' + threeDshapes['rect']['status'] +'.png'}}">
 						</div>
 						<div class="circle">
 							<span class="sr-only">Circle {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="circle" tabindex="0" my-enter="selectShape('circle')" ng-disabled="enableAll" ng-click="selectShape('circle')" ng-src="{{inner + model.imagePath + 'circle_' + threeDshapes['circle']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['circle']['altText']}}" tabindex="0" my-enter="selectShape('circle')" ng-disabled="enableAll" ng-click="selectShape('circle')" ng-src="{{inner + model.imagePath + 'circle_' + threeDshapes['circle']['status'] +'.png'}}">
 						</div>
 						<div class="cylinder">
 							<span class="sr-only">Cylinder {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="cylinder" tabindex="0" my-enter="selectShape('cylinder')" ng-disabled="enableAll" ng-click="selectShape('cylinder')" ng-src="{{inner + model.imagePath + 'cylinder_' + threeDshapes['cylinder']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['cylinder']['altText']}}" tabindex="0" my-enter="selectShape('cylinder')" ng-disabled="enableAll" ng-click="selectShape('cylinder')" ng-src="{{inner + model.imagePath + 'cylinder_' + threeDshapes['cylinder']['status'] +'.png'}}">
 						</div>
 						<div class="polygon">
 							<span class="sr-only">Polygon {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="polygon" tabindex="0" my-enter="selectShape('polygon')" ng-disabled="enableAll" ng-click="selectShape('polygon')" ng-src="{{inner + model.imagePath + 'polygon_' + threeDshapes['polygon']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['polygon']['altText']}}" tabindex="0" my-enter="selectShape('polygon')" ng-disabled="enableAll" ng-click="selectShape('polygon')" ng-src="{{inner + model.imagePath + 'polygon_' + threeDshapes['polygon']['status'] +'.png'}}">
 						</div>
 						<div class="cone">
 							<span class="sr-only">Cone {{threeDshapes['square']['status']}}.</span>
 
-							<img alt="cone" tabindex="0" my-enter="selectShape('cone')" ng-disabled="enableAll" ng-click="selectShape('cone')" ng-src="{{inner + model.imagePath + 'cone_' + threeDshapes['cone']['status'] +'.png'}}">
+							<img alt="{{threeDshapes['cone']['altText']}}" tabindex="0" my-enter="selectShape('cone')" ng-disabled="enableAll" ng-click="selectShape('cone')" ng-src="{{inner + model.imagePath + 'cone_' + threeDshapes['cone']['status'] +'.png'}}">
 						</div>
 					</div>
 					<div ng-if="hideAllShapes" class="acitvity-container">
@@ -142,27 +142,28 @@
 							<img class="selectedShape" ng-src="{{inner + model.imagePath + selectedShape + '_normal.png'}}">
 						</div>
 						<div droppable class="drop-container">
+							<span class="sr-only"><h1>Box region to drag and drop the shape.</h1></span>
+
 							<div ng-repeat="blueShape in blueShapes">
-								<img drag-accessible alt="{{blueShape}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{blueShape}}" enable-all="enableAll" source="blueDrop" class="draggable isDraggable" ng-class="[blueShape,{enableAll: noPointerEvents}]"  ng-src="{{inner + model.imagePath + blueShape + '.png'}}">
-								<span class="sr-only">{{blueShape}} dragged.</span>
+								<img drag-accessible alt="{{model.altText[blueShape]}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{blueShape}}" enable-all="enableAll" source="blueDrop" class="draggable isDraggable" ng-class="[blueShape,{enableAll: noPointerEvents}]"  ng-src="{{inner + model.imagePath + blueShape + '.png'}}">
 							</div>
 							<div ng-repeat="greenShape in greenShapes">
-								<img drag-accessible alt="{{greenShape}}" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{greenShape}}" enable-all="enableAll" source="greenDrop" class="draggable isDraggable" ng-class="[greenShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + greenShape + '.png'}}">
-								<span class="sr-only">{{blueShape}} dragged.</span>
+								<img drag-accessible alt="{{model.altText[greenShape]}}" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{greenShape}}" enable-all="enableAll" source="greenDrop" class="draggable isDraggable" ng-class="[greenShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + greenShape + '.png'}}">
 							</div>
 						</div>
 					</div>
 					<div droppable class="drag-stations">
 						<div class="blue-container">
+							<span class="sr-only"><h2>Blue player region with 6 shapes.</h2></span>
 							<div ng-repeat="blueShape in blueShapes">
-								<img drag-accessible alt="{{blueShape}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{blueShape}}" enable-all="enableAll" source="blueDrag" class="draggable isDraggable" ng-class="[blueShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + blueShape + '.png'}}">
-								<span class="sr-only">{{blueShape}} dragged.</span>
+								<img drag-accessible alt="{{model.altText[blueShape]}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{blueShape}}" enable-all="enableAll" source="blueDrag" class="draggable isDraggable" ng-class="[blueShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + blueShape + '.png'}}">
 							</div>
 						</div>
 						<div droppable class="green-container">
+							<span class="sr-only"><h2>Green player region with 6 shapes.</h2></span>
+
 							<div ng-repeat="greenShape in greenShapes">
-								<img drag-accessible alt="{{greenShape}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{greenShape}}" enable-all="enableAll" source="greenDrag" class="draggable isDraggable" ng-class="[greenShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + greenShape + '.png'}}">
-								<span class="sr-only">{{greenShape}} dragged.</span>
+								<img drag-accessible alt="{{model.altText[greenShape]}}" ng-disabled="enableAll" draggable ng-mousedown="playEffectAudio();" drag-start="dragStart(arg)" drag-stop="dragStop(arg)" data-type="{{greenShape}}" enable-all="enableAll" source="greenDrag" class="draggable isDraggable" ng-class="[greenShape,{noPointerEvents: !enableAll}]"  ng-src="{{inner + model.imagePath + greenShape + '.png'}}">
 
 							</div>
 						</div>
@@ -170,17 +171,18 @@
 				</div>
 				<div ng-if="showDemo" class="help-container demo_activity">
 					<div class="help-view">
+						<span class="sr-only"><h1>Animation to see how this shape makes a print.</h1></span>
 						<img class="{{selectedShape}}" ng-show="!playAnimationBool" ng-src="{{inner + model.imagePath + 'help_movie_' + selectedShape + '.png'}}">
 						<img class="{{selectedShape}}" ng-show="playAnimationBool" ng-src="{{gifImageUrl}}">
 					</div>
-					<button ng-click="playAnimation()" id="play" class="dis-ass" ng-mousedown="playDown=true" ng-mouseup="playDown=false" ng-mouseout="playDown=false" ng-class="{'down': playDown}" aria-label="play video" tabindex="0">
-						<span class="sr-only">Play instructions.</span>
+					<button ng-click="playAnimation()" id="play" class="dis-ass" ng-mousedown="playDown=true" ng-mouseup="playDown=false" ng-mouseout="playDown=false" ng-class="{'down': playDown}" aria-label="Play animation" tabindex="0">
+						<span class="sr-only">Play animation.</span>
 					</button>
-					<button ng-click="pauseAnimation()" id="pause" class="dis-ass" ng-mousedown="pauseDown=true" ng-mouseup="pauseDown=false" ng-mouseout="pauseDown=false" ng-class="{'down': pauseDown}" tabindex="0" aria-label="pause video">
-						<span class="sr-only">Pause instructions.</span>
+					<button ng-click="pauseAnimation()" id="pause" class="dis-ass" ng-mousedown="pauseDown=true" ng-mouseup="pauseDown=false" ng-mouseout="pauseDown=false" ng-class="{'down': pauseDown}" tabindex="0" aria-label="Pause animation">
+						<span class="sr-only">Pause animation.</span>
 					</button>
-					<button ng-click="previousAnimation()" id="prev" class="dis-ass" ng-mousedown="prevDown=true" ng-mouseup="prevDown=false" ng-mouseout="prevDown=false" ng-class="{'down': prevDown}" tabindex="0" aria-label="back">
-						<span class="sr-only">Previous instructions.</span>
+					<button ng-click="previousAnimation()" id="prev" class="dis-ass" ng-mousedown="prevDown=true" ng-mouseup="prevDown=false" ng-mouseout="prevDown=false" ng-class="{'down': prevDown}" tabindex="0" aria-label="Rewind animation.">
+						<span class="sr-only">Rewind animation.</span>
 					</button>
 				</div>
 			</div>

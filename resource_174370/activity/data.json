@@ -161,36 +161,42 @@
 			"threeDshapes":{
 				"square" : {
 					"status" : "normal",
+					"altText" : "Cube",
 					"answerKey" : ["blue_square","blue_line1","green_circle3"],
 					"demoText" : "A cube, a blank piece of paper, and a tray containing colored solution are next to one another.",
 					"playText" : "The cube is dipped in the colored solution and pressed onto the blank paper in 3 different ways. The paper now has 3 prints which are a short line, a small square, and a point."
 				},
 				"rect" : {
 					"status" : "normal",
+					"altText" : "Rectangular Prism",
 					"answerKey" : ["blue_square2","blue_line3","green_circle3","green_rect","green_line"],
 					"demoText" : "A rectangular prism, blank piece of paper, and a tray containing colored solution are below the other.",
 					"playText" : "The rectangular prism is dipped in the colored solution and pressed onto the blank paper in 5 different ways. The paper now has 5 prints which are a short line, a small square, a point, a large rectangle, and a long line."
 				},
 				"circle" : {
 					"status" : "normal",
+					"altText" : "Sphere",
 					"answerKey" : ["green_circle2"],
 					"demoText" : "A sphere, a blank piece of paper, and a tray containing colored solution are next to one another. ",
 					"playText" : "The sphere is dipped in the colored solution and pressed onto the blank paper once. The paper now has 1 print which is a small circle."
 				},
 				"cylinder" : {
 					"status" : "normal",
+					"altText" : "Cylinder",
 					"answerKey" : ["green_circle","blue_line2"],
 					"demoText" : "A cylinder, a blank piece of paper, and a tray containing colored solution are next to one another.",
 					"playText" : "The cylinder is dipped in the colored solution and pressed onto the blank paper in 2 different ways. The paper now has 2 prints which are a large circle and small rectangle."
 				},
 				"polygon" : {
 					"status" : "normal",
+					"altText" : "Two pyramids sharing a common base",
 					"answerKey" : ["green_triangle","green_circle3","blue_line1"],
 					"demoText" : "Two pyramids sharing a common base, a blank piece of paper, and a tray containing colored solution are next to one another.",
 					"playText" : "The two pyramids sharing a common base are dipped in the colored solution and pressed onto the blank paper in 3 different ways. The paper now has 3 prints which are a point, a small triangle, and a short line."
 				},
 				"cone" : {
 					"status" : "normal",
+					"altText" : "Pyramid",
 					"answerKey" : ["green_line","blue_cone","green_circle3","blue_line1","blue_square"],
 					"demoText" : "A pyramid, a blank piece of paper, and a tray containing colored solution are next to one another.",
 					"playText" : "The pyramid is dipped in the colored solution and pressed onto the blank paper in 5 different ways. The paper now has 5 prints which are a medium line, a long line, a large square, a large triangle, and a point."
@@ -199,18 +205,18 @@
 			"blueShapes" : ["blue_square","blue_line1","blue_square2","blue_line2","blue_line3","blue_cone"],
 			"greenShapes": ["green_circle","green_rect","green_line","green_circle2","green_circle3","green_triangle"],
 			"altText" : {
-				"blue_square" : "Print of a square",
-				"blue_square2" : "Print of a small square",
-				"blue_line2" : "Print of a small line",
-				"blue_cone" : "Print of a large cone",
-				"blue_line1" : "Print of a medium line",
-				"blue_line3" : "Print of a small rectangle",
-				"green_circle" : "Print of a large circle",
-				"green_rect" : "Print of a large rectangle",
-				"green_triangle" : "Print of a small triangle",
-				"green_line" : "Print of a long line",
-				"green_circle2" : "Print of a small circle",
-				"green_circle3" : "Print of a point"
+				"blue_square" : "Blue print of a square",
+				"blue_square2" : "Blue print of a small square",
+				"blue_line2" : "Blue print of a small line",
+				"blue_cone" : "Blue print of a large cone",
+				"blue_line1" : "Blue print of a medium line",
+				"blue_line3" : "Blue print of a small rectangle",
+				"green_circle" : "Green print of a large circle",
+				"green_rect" : "Green print of a large rectangle",
+				"green_triangle" : "Green print of a small triangle",
+				"green_line" : "Green print of a long line",
+				"green_circle2" : "Green print of a small circle",
+				"green_circle3" : "Green print of a point"
 			},
 			"homepageTitle":"Match 3D shapes to their prints",
 			"toatalChances": 5,

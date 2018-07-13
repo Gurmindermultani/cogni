@@ -17,6 +17,25 @@ app.directive('effectAudio', function() {
 	}
 });
 
+function allElementsFromPoint(x, y) {
+    var element, elements = [];
+    var old_visibility = [];
+    while (true) {
+        element = document.elementFromPoint(x, y);
+        if (!element || element === document.documentElement) {
+            break;
+        }
+        elements.push(element);
+        old_visibility.push(element.style.visibility);
+        element.style.visibility = 'hidden'; // Temporarily hide the element (without changing the layout)
+    }
+    for (var k = 0; k < elements.length; k++) {
+        elements[k].style.visibility = old_visibility[k];
+    }
+    elements.reverse();
+    return elements;
+}
+
 app.directive('draggable', function() {
 	return function(scope, element) {
 		var el = element[0];
@@ -31,6 +50,11 @@ app.directive('draggable', function() {
 			stop: function(event) {
 				//scope.changeEffect(4);
 				scope.dragStop(event);
+				var el = allElementsFromPoint(event.pageX,event.pageY);
+				if(!$(el).filter('.drop-container')[0]){
+					$(this).hide();
+					$('.drag-stations').find("." + $(this).data("type")).show();
+				}
 				
 			}
 		});
@@ -46,6 +70,9 @@ app.directive('draggable', function() {
 
 	}
 });
+
+
+
 
 app.directive('droppable', function() {
 	return {

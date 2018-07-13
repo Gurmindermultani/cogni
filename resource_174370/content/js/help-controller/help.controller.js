@@ -28,7 +28,7 @@ $(document).ready(function() {
 
     $("#play").on("click", function() {
 
-        $("#video-alert").html('<span class="sr-only">The alternate of video is provided within keyboard accessibility instructions</span>');
+        $("#video-alert").html('<span class="sr-only">The alternate of video is provided within help keyboard instructions</span>');
         audioElement.play();
         $("#prev").attr("disabled", false);
         $("#prev").addClass("enabled");
@@ -137,9 +137,10 @@ $(document).ready(function() {
         window.parent.document.getElementById("rootCloseBtn").setAttribute("tabindex", -1);
         $(".help-clicked").show();
         $("#game-button").css("display", "block");
+        $("#helpbox .no_btn").focus();
         if (keyPressed) {
             setTimeout(function() {
-                $("#helpbox").focus();
+                $("#helpbox .no_btn").focus();
             }, 100);
 
         }
